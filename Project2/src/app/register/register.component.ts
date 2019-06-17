@@ -8,7 +8,7 @@ import { IUser } from '../services/User';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private user: IUser;
+  user: IUser;
   email = '';
   username = '';
   password = '';
