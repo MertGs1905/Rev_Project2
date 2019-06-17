@@ -1,0 +1,27 @@
+.navbar-default {
+    background: rgb(27, 162, 240);
+    color: white;
+    margin-left: 245px;
+    width:83.8%;
+    margin-top: -1px;
+    padding-top: 0px;
+}
+.navbar-brand {
+    font-size: 1.5em;
+    color: white;
+}
+.nav.navbar a {
+
+    color: white;
+}
+
+.nav-item a {
+    font-size: 1.25em;
+    color: white;
+    background: rgb(27, 162, 240);
+}
+
+.nav-item a:hover{
+    color: black;
+    background: rgb(27, 162, 240);
+}
