@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   title = 'Project2';
-  navbarOpen = false;  
+  navbarOpen = false;
   constructor() { }
 
   ngOnInit() {
