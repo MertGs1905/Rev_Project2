@@ -1,20 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IUser } from '../services/User';
 import { CurrentUserService } from '../services/current-user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
   currentUser: IUser;
   constructor(private userService: CurrentUserService) {
+    this.subscription = this.userService.getCurrentUser().subscribe(user => {
+      if (user) {
+        this.currentUser = user;
+      } else {
+        this.currentUser = null;
+      }
+      console.log('CurrentUser in sidebar ' + this.currentUser);
+    });
   }
 
   ngOnInit() {
-    this.userService.getCurrentUser().subscribe(user => this.currentUser = user);
-    console.log('CurrentUser in sidebar ' + this.currentUser);
+
+  }
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 
 
