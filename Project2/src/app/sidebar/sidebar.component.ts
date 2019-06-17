@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../services/User';
+import { CurrentUserService } from '../services/current-user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor() { }
+  currentUser: IUser;
+  constructor(private userService: CurrentUserService) {
+  }
 
   ngOnInit() {
+    this.userService.getCurrentUser().subscribe(user => this.currentUser = user);
+    console.log('CurrentUser in sidebar ' + this.currentUser);
   }
+
 
 }
 

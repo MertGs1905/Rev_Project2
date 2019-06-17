@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { IUser } from './User';
 
 @Injectable()
@@ -10,7 +11,7 @@ export class CurrentUserService {
     this.currentUser = user;
   }
 
-  getCurrentUser() {
-    return this.currentUser;
+  getCurrentUser(): Observable<IUser> {
+    return of(this.currentUser);
   }
 }
