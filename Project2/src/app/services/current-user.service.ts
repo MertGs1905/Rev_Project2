@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject, of } from 'rxjs';
 import { IUser } from './User';
 
 @Injectable()
 export class CurrentUserService {
-  private currentUser: IUser;
+  private subject = new Subject<IUser>();
   constructor() { }
 
   setCurrentUser(user: IUser) {
-    this.currentUser = user;
+    this.subject.next(user);
   }
 
-  getCurrentUser() {
-    return this.currentUser;
+  getCurrentUser(): Observable<IUser> {
+    return this.subject.asObservable();
   }
 }

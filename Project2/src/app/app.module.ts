@@ -6,9 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CurrentUserService } from './services/current-user.service';
 import { LoginComponent } from './login/login.component';
+import { CurrentUserService } from './services/current-user.service';
+
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PostFormComponent } from './post-form/post-form.component';
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     RegisterComponent,
     NavbarComponent,
     LoginComponent,
-    SidebarComponent
+    SidebarComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       { path: 'login', component: LoginComponent }
     ])
   ],
-  providers: [CurrentUserService],
+  providers: [CurrentUserService,PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
