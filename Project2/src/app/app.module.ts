@@ -6,8 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CurrentUserService } from './services/current-user.service';
 import { LoginComponent } from './login/login.component';
+import { CurrentUserService } from './services/current-user.service';
+
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
