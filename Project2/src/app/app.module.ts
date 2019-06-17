@@ -12,6 +12,7 @@ import { CurrentUserService } from './services/current-user.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostService } from './services/post.service';
+import { UsercardComponent } from './usercard/usercard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PostService } from './services/post.service';
     NavbarComponent,
     LoginComponent,
     SidebarComponent,
-    PostFormComponent
+    PostFormComponent,
+    UsercardComponent
   ],
   imports: [
     BrowserModule,
