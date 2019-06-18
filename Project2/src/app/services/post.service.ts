@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import {IPost} from './Post'
+import {IPost} from './Post';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +9,13 @@ export class PostService  {
 
   constructor() { }
 
-  addPost(post : IPost){
+  addPost(post: IPost) {
     this.posts.push(post);
   }
 
-  getPosts(): IPost[]{
+  getPosts(): IPost[] {
     return this.posts;
   }
 
-  
+
 }
