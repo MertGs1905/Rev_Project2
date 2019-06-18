@@ -1,24 +1,24 @@
 <div class="container-fluid">
   <div class="jumbotron min-vh-100">
     <div class="row">
-      <div class="col-12 p-0">        
+      <div class="col-12 p-0">
           <h1 class="display-4">Login</h1>
           <div class="form-group col-md-4 p-3">
             <label for="email-input">Email address</label>
             <input [(ngModel)]='email' type="email" class="form-control form-control-lg" id="email-input"
               aria-describedby="emailHelp" placeholder="Enter email">
           </div>
-       
+
       </div>
-    </div>    
+    </div>
     <div class="row">
-        <div class="col-12 p-0">        
+        <div class="col-12 p-0">
             <div class="form-group col-md-4 p-3">
               <label for="password-input">Password</label>
               <input [(ngModel)]='password' type="password" class="form-control form-control-lg" id="password-input"
                 aria-describedby="passwordHelp" placeholder="Enter password">
             </div>
-          
+
         </div>
       </div>
     <button class="btn btn-success btn-lg">Register</button>
@@ -27,7 +27,7 @@
 <div class="form-group">
   <label for="password-input">Password</label>
   <input type="password" class="form-control" id="password-input" placeholder="Password">
-</div> 
+</div>
 <div>
   <button onclick="getUser" class="btn btn-success">Login</button>
 </div>

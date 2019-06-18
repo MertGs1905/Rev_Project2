@@ -13,10 +13,10 @@ post: IPost;
 
   ngOnInit() {
   }
-setPost(){
+setPost() {
   this.post = {
-   
-    username: "mert",
+
+    username: 'mert',
     comment: this.postText
 
   };
