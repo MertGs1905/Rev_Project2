@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       username: this.username
     };
 
-    this.login.setCurrentUser(this.user);
+    //this.login.setCurrentUser(this.user);
 
   }
 

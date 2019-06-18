@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IUser } from '../services/User';
 import { CurrentUserService } from '../services/current-user.service';
 import { Subscription } from 'rxjs';
+import { AuthenticationService } from '../services';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,25 +13,37 @@ import { Subscription } from 'rxjs';
 export class SidebarComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   currentUser: IUser;
-  constructor(private userService: CurrentUserService) {
+  userList = new Array();
+  constructor(private userService: CurrentUserService, private authenticationService: AuthenticationService) {
     this.subscription = this.userService.getCurrentUser().subscribe(user => {
       if (user) {
         this.currentUser = user;
       } else {
         this.currentUser = null;
       }
-      console.log('CurrentUser in sidebar ' + this.currentUser);
+      // console.log('CurrentUser in sidebar ' + this.currentUser);
     });
   }
 
   ngOnInit() {
-
+    const temp = this.authenticationService.getusers().pipe(first()).subscribe(userList => {
+        if (userList) {
+            this.userList = userList;
+        } else {
+            this.userList = null;
+        }
+    });
+    console.log(temp);
+    this.userList.push(temp);
   }
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
 
+
+}
+function getUsers() {
 
 }
 

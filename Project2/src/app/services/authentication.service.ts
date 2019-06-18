@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IUser } from './User';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -26,7 +27,12 @@ export class AuthenticationService {
                 return user;
             }));
     }
-
+    getusers() {
+        return this.http.get<any>(`localhost:4200/users/showusers`)
+            .pipe(map(user => {
+                return user;
+            }));
+    }
     logout() {
         // remove user from local storage and set current user to null
         localStorage.removeItem('currentUser');

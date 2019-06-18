@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
+import { IUser } from '../services/User';
+import { isBuffer, isUndefined } from 'util';
 
-let users = [{ id: 1, firstName: 'Jason', lastName: 'Watmore', username: 'test', password: 'test' }];
+let users = [{ id: 1, firstName: 'Jason', lastName: 'Watmore', username: 'test', password: 'test' },
+{ id: 2, firstName: 'Jacob', lastName: 'Shanlkin', username: 'Admin', password: '123!' }];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -22,6 +25,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             switch (true) {
                 case url.endsWith('/users/authenticate') && method === 'POST':
                     return authenticate();
+                case url.endsWith('/users/showusers') && method === 'GET':
+                    return showusers();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -42,7 +47,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 token: 'fake-jwt-token'
             });
         }
-
+        function showusers() {
+            return ok(users);
+        }
         // helper functions
 
         function ok(body?) {
