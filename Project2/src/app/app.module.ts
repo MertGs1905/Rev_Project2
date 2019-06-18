@@ -37,7 +37,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     RouterModule.forRoot([
       { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]}
     ])
   ],
   providers: [
