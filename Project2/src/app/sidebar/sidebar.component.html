@@ -7,7 +7,7 @@
 
         <ul class="list-unstyled components" *ngIf="currentUser">
             <li class="active" *ngFor="let b of userList">
-                {{ b.username }}
+                {{ b.firstName }} {{  b.lastName }}
                 <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
                     <a href="#">Home 1</a>
