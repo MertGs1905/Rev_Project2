@@ -6,7 +6,7 @@ import { IUser } from '../services/User';
 import { isBuffer, isUndefined } from 'util';
 
 let users = [{ id: 1, firstName: 'Chris', lastName: 'Sinko', username: 'test', password: 'test' },
-{ id: 2, firstName: 'Jacob', lastName: 'Shanlkin', username: 'Admin', password: '123!' },
+{ id: 2, firstName: 'Jacob', lastName: 'Shanklin', username: 'Admin', password: '123!' },
 { id: 3, firstName: 'Mert', lastName: 'Altun', username: 'Admin2', password: '123!' },
 { id: 4, firstName: 'Mike', lastName: 'Perkins', username: 'Admin3', password: '123!' },
 { id: 5, firstName: 'Tyree', lastName: 'Graham', username: 'Admin4', password: '123!' }
