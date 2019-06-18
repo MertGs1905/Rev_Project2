@@ -1,5 +1,5 @@
-export interface IPost{
-    username: String;
-    comment: String;
-   
+export interface IPost {
+    username: string;
+    comment: string;
+
 }
