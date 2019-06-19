@@ -13,7 +13,7 @@ export class PostService  {
 
 
   private set posts(val: IPost[]){
-    this.posts.next(val);
+    this.subject.next(val);
   }
   addPost(post : IPost){
     this.posts =[...this.posts,post];

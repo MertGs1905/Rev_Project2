@@ -4,6 +4,7 @@ import { PostService } from '../services/post.service';
 import { CurrentUserService } from '../services/current-user.service';
 import { Subscription } from 'rxjs';
 import { IUser } from '../services/User';
+import { AuthenticationService } from '../services';
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
@@ -15,10 +16,10 @@ export class PostFormComponent implements OnInit {
   username: string;
   subscription: Subscription;
   currentUser: IUser;
-  constructor(private postsService: PostService, private userService: CurrentUserService) {
+  constructor(private postsService: PostService, private userService: AuthenticationService) {
 
 
-    this.subscription = this.userService.getCurrentUser().subscribe(user => {
+    this.subscription = this.userService.currentUser.subscribe(user => {
 
       if (user) {
         this.currentUser = user;
@@ -40,7 +41,7 @@ export class PostFormComponent implements OnInit {
 
     };
 
-
+    console.log(this.post);
 
     this.postsService.addPost(this.post);
 
