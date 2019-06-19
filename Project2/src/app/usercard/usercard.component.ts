@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IUser } from '../services/User';
 import { CurrentUserService } from '../services/current-user.service';
 import { Subscription } from 'rxjs';
+import { AuthenticationService } from '../services';
 
 @Component({
   selector: 'app-usercard',
@@ -11,8 +12,8 @@ import { Subscription } from 'rxjs';
 export class UsercardComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   currentUser: IUser;
-  constructor(private userService: CurrentUserService) {
-    this.subscription = this.userService.getCurrentUser().subscribe(user => {
+  constructor(private userService: AuthenticationService) {
+    this.subscription = this.userService.currentUser.subscribe(user => {
       if (user) {
         this.currentUser = user;
       } else {
