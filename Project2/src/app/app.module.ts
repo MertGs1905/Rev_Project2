@@ -13,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostService } from './services/post.service';
 import { UsercardComponent } from './usercard/usercard.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,16 @@ import { UsercardComponent } from './usercard/usercard.component';
     LoginComponent,
     SidebarComponent,
     PostFormComponent,
-    UsercardComponent
+    UsercardComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
       { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent}
     ])
   ],
   providers: [CurrentUserService,PostService],
