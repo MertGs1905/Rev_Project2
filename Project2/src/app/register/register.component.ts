@@ -24,6 +24,10 @@ export class RegisterComponent implements OnInit {
       password: this.password
     };
 
+<<<<<<< HEAD
     this.userService.login(this.user);
+=======
+    // this.userService.setCurrentUser(this.user);
+>>>>>>> ed5bdef0bb2ddc5cbc3db242b0f961ae7d1d29d1
   }
 }

@@ -34,12 +34,21 @@ export class PostFormComponent implements OnInit {
 
   ngOnInit() {
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed5bdef0bb2ddc5cbc3db242b0f961ae7d1d29d1
   setPost() {
     this.post = {
       username: this.username,
       comment: this.postText
     };
+<<<<<<< HEAD
+=======
+
+    console.log(this.post);
+
+>>>>>>> ed5bdef0bb2ddc5cbc3db242b0f961ae7d1d29d1
     this.postsService.addPost(this.post);
 
   }
