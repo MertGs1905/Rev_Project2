@@ -15,11 +15,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostService } from './services/post.service';
 import { UsercardComponent } from './usercard/usercard.component';
+
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 import { fakeBackendProvider } from './_helpers';
 import { AuthGuard } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { PostFeedComponent } from './post-feed/post-feed.component';
 import { PostCardComponent } from './post-card/post-card.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +49,7 @@ import { PostCardComponent } from './post-card/post-card.component';
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'feed', component: PostFeedComponent }
       // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
+
     ])
   ],
   providers: [
