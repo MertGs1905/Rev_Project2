@@ -1,0 +1,18 @@
+#post-card{
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;    
+}
+
+#post-card img {
+    max-width: 150px;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+#post-card-body {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

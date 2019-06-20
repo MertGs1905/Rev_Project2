@@ -8,8 +8,8 @@ import { IPost } from '../services/Post';
   styleUrls: ['./post-card.component.css']
 })
 export class PostCardComponent implements OnInit {
-  user: IUser;
-  post: IPost;
+  userName: string;
+  postText: string;
   constructor() { }
 
   ngOnInit() {
