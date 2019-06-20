@@ -45,6 +45,7 @@ import { PostCardComponent } from './post-card/post-card.component';
     RouterModule.forRoot([
       { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent},
       { path: 'login', component: LoginComponent },
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'feed', component: PostFeedComponent }
