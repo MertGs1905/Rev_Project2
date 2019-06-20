@@ -5,12 +5,7 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { IUser } from '../services/User';
 import { isBuffer, isUndefined } from 'util';
 
-let users = [{ id: 1, firstName: 'Chris', lastName: 'Sinko', username: 'test', password: 'test' },
-{ id: 2, firstName: 'Jacob', lastName: 'Shanklin', username: 'admin', password: '123!' },
-{ id: 3, firstName: 'Mert', lastName: 'Altun', username: 'admin2', password: '123!' },
-{ id: 4, firstName: 'Mike', lastName: 'Perkins', username: 'admin3', password: '123!' },
-{ id: 5, firstName: 'Tyree', lastName: 'Graham', username: 'admin4', password: '123!' }
-];
+let users = JSON.parse(localStorage.getItem('users')) || [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -31,6 +26,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return authenticate();
                 case url.endsWith('/users/showusers') && method === 'GET':
                     return showusers();
+                case url.endsWith('/users/register') && method === 'POST':
+                    return register();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -51,11 +48,27 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 token: 'fake-jwt-token'
             });
         }
+
+        function register() {
+            const user = body;
+
+            if (users.find(x => x.username === user.username)) {
+                return error('Username "' + user.username + '" is already taken');
+            }
+
+            user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            return ok();
+        }
+
         function showusers() {
             return ok(users);
         }
         // helper functions
 
+        // tslint:disable-next-line: no-shadowed-variable
         function ok(body?) {
             return of(new HttpResponse({ status: 200, body }));
         }
