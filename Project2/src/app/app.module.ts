@@ -15,13 +15,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostService } from './services/post.service';
 import { UsercardComponent } from './usercard/usercard.component';
-<<<<<<< HEAD
+
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-=======
+
 import { fakeBackendProvider } from './_helpers';
 import { AuthGuard } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
->>>>>>> b6e00f791ec6872ac1f26692de108e06098c5285
+
 
 @NgModule({
   declarations: [
@@ -43,17 +43,12 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
       { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-<<<<<<< HEAD
-<<<<<<< HEAD
-      { path: 'resetpassword', component: ResetPasswordComponent}
-=======
-      { path: 'newPost', component: PostFormComponent, canActivate: [AuthGuard]},
-      { path: 'post', component: PostFormComponent}
-=======
+
+      { path: 'resetpassword', component: ResetPasswordComponent},
+
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
->>>>>>> 8992443c180df676282b917aa95af457cd9be9a0
       // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
->>>>>>> b6e00f791ec6872ac1f26692de108e06098c5285
+
     ])
   ],
   providers: [
