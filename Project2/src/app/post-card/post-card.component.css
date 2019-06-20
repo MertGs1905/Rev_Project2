@@ -1,13 +1,18 @@
 #post-card{
     max-width: 500px;
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
+    margin-bottom: 5px;  
+    border: 1px solid #33f;
+    border-radius: 15px;  
 }
 
 #post-card img {
+    padding: 10px;
     max-width: 150px;
     justify-self: flex-start;
     align-self: flex-start;
+    border-radius: 15px;
 }
 
 #post-card-body {    
