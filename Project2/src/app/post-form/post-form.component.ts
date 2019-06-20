@@ -14,6 +14,7 @@ export class PostFormComponent implements OnInit {
   postText: string;
   post: IPost;
   username: string;
+  userId: number;
   subscription: Subscription;
   currentUser: IUser;
   constructor(private postsService: PostService, private userService: AuthenticationService) {
@@ -33,24 +34,12 @@ export class PostFormComponent implements OnInit {
 
   ngOnInit() {
   }
-<<<<<<< HEAD
-setPost() {
-  this.post = {
-    username: 'mert',
-    comment: this.postText
-  };
-=======
+
   setPost() {
     this.post = {
-
       username: this.username,
       comment: this.postText
-
     };
->>>>>>> 1475b36bb0bced8d4a6acfd3c144fd430c4309f6
-
-    console.log(this.post);
-
     this.postsService.addPost(this.post);
 
   }
