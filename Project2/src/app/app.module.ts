@@ -38,8 +38,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
       { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'newPost', component: PostFormComponent, canActivate: [AuthGuard]},
-      { path: 'post', component: PostFormComponent}
+      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
       // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
     ])
   ],
