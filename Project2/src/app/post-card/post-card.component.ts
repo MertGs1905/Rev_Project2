@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from '../services/User';
+import { IPost } from '../services/Post';
 
 @Component({
   selector: 'app-post-card',
@@ -6,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-card.component.css']
 })
 export class PostCardComponent implements OnInit {
-
+  user: IUser;
+  post: IPost;
   constructor() { }
 
   ngOnInit() {
