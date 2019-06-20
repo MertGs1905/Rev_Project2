@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IUser } from '../services/User';
 import { IPost } from '../services/Post';
 
@@ -8,8 +8,8 @@ import { IPost } from '../services/Post';
   styleUrls: ['./post-card.component.css']
 })
 export class PostCardComponent implements OnInit {
-  userName: string;
-  postText: string;
+  @Input() userName: string;
+  @Input() postText: string;
   constructor() { }
 
   ngOnInit() {

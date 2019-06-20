@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
-import { IPost } from './Post'
-import { Observable, Subject, of } from 'rxjs';
+import { IPost } from './Post';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private subject = new Subject<IPost[]>();
+  posts: Observable<IPost[]>;
+  private postSub: BehaviorSubject<IPost[]>;
+  private baseUrl: string;
+  private dataStore: {
+    posts: IPost[]
+  };
 
-  posts$ = this.subject.asObservable();
-  constructor() { }
-
-
-  private set posts(val: IPost[]) {
-    this.subject.next(val);
+  constructor() {
+    this.dataStore = { posts: [] };
+    this.postSub = new BehaviorSubject([]);
+    this.posts = this.postSub.asObservable();
   }
+
   addPost(post: IPost) {
-    this.posts = [...this.posts, post];
+    this.dataStore.posts.push(post);
+    this.postSub.next(Object.assign({}, this.dataStore).posts);
   }
 
   getPosts(): IPost[] {
-    return this.posts;
+    return this.dataStore.posts;
   }
-
 
 }
