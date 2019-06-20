@@ -1,9 +1,9 @@
 <div id="register-container" class="container-fluid">
-  <div class="jumbotron min-vh-100">
+  <div id="jumbotron" class="jumbotron min-vh-100">
     <div class="row">
       <div class="col-12 p-0">        
           <h1 class="display-4">Register</h1>
-          <div class="form-group col-md-4 p-3">
+          <div class="form-group col-md-9 p-3">
             <label for="email-input">Email address</label>
             <input [(ngModel)]='email' type="email" class="form-control form-control-lg" id="email-input"
               aria-describedby="emailHelp" placeholder="Enter email">
@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col-12 p-0">        
-          <div class="form-group col-md-4 p-3">
+          <div class="form-group col-md-9 p-3">
             <label for="username-input">Username</label>
             <input [(ngModel)]='username' type="text" class="form-control form-control-lg" id="username-input"
               aria-describedby="usernameHelp" placeholder="Enter username">
@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-12 p-0">        
-            <div class="form-group col-md-4 p-3">
+            <div class="form-group col-md-9 p-3">
               <label for="password-input">Password</label>
               <input [(ngModel)]='password' type="password" class="form-control form-control-lg" id="password-input"
                 aria-describedby="passwordHelp" placeholder="Enter password">
@@ -31,6 +31,6 @@
           
         </div>
       </div>
-    <button (click)='registerUser()' class="btn btn-success btn-lg">Register</button>
+    <button (click)='registerUser()' class="btn btn-success btn-md">Register</button>
   </div>
 </div>

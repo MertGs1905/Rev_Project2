@@ -1,0 +1,9 @@
+#login-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+#jumbotron {
+    width: 75%;
+}
