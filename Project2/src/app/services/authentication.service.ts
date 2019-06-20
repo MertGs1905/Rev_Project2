@@ -29,6 +29,9 @@ export class AuthenticationService {
                 return user;
             }));
     }
+    registerNewUser(user) {
+        // todo add register to array
+    }
     getusers() {
         return this.http.get<any>(`${environment.apiUrl}/users/showusers`)
             .pipe(map(user => {

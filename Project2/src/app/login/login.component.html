@@ -1,6 +1,6 @@
 <div id="login-container" class="container-fluid">
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
-    
+    <div *ngIf="success" class="alert alert-success">{{success}}</div>
     <div id="jumbotron" class="jumbotron min-vh-100">
             <h1 class="display-4">Login</h1>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -26,7 +26,7 @@
                 <label for="password">Password</label>
                 <input
                     type="password"
-                    formControlName="password"
+             gitame="password"
                     class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                 />
