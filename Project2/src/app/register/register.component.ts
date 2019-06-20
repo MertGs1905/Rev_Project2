@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrentUserService } from '../services/current-user.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { IUser } from '../services/User';
 
 @Component({
@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   email = '';
   username = '';
   password = '';
-  constructor(private userService: CurrentUserService) { }
+  constructor(private userService: AuthenticationService) { }
 
   ngOnInit() {
   }

@@ -18,6 +18,8 @@ import { UsercardComponent } from './usercard/usercard.component';
 import { fakeBackendProvider } from './_helpers';
 import { AuthGuard } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { PostFeedComponent } from './post-feed/post-feed.component';
+import { PostCardComponent } from './post-card/post-card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     LoginComponent,
     SidebarComponent,
     PostFormComponent,
-    UsercardComponent
+    UsercardComponent,
+    PostFeedComponent,
+    PostCardComponent
   ],
   imports: [
     BrowserModule,
@@ -38,13 +42,14 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
       { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
+      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard] },
+      { path: 'feed', component: PostFeedComponent }
       // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
     ])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     CurrentUserService, PostService, fakeBackendProvider],
   bootstrap: [AppComponent]
 })

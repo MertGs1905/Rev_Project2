@@ -33,6 +33,13 @@ export class PostFormComponent implements OnInit {
 
   ngOnInit() {
   }
+<<<<<<< HEAD
+setPost() {
+  this.post = {
+    username: 'mert',
+    comment: this.postText
+  };
+=======
   setPost() {
     this.post = {
 
@@ -40,6 +47,7 @@ export class PostFormComponent implements OnInit {
       comment: this.postText
 
     };
+>>>>>>> 1475b36bb0bced8d4a6acfd3c144fd430c4309f6
 
     console.log(this.post);
 
