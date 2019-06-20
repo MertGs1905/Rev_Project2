@@ -15,10 +15,8 @@ post: IPost;
   }
 setPost() {
   this.post = {
-
     username: 'mert',
     comment: this.postText
-
   };
 
   this.postsService.addPost(this.post);
