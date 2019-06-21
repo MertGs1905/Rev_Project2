@@ -26,9 +26,9 @@
                 <label for="password">Password</label>
                 <input
                     type="password"
-             gitame="password"
+                    formControlName="password"
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                    [ngClass]="{ 'is-invalid': submitted && !!f.password.errors }"
                 />
                 <div
                     *ngIf="submitted && !!f.password.errors"
@@ -48,6 +48,7 @@
                     Login
                 </button>
                 <a routerLink="/register" class="btn btn-link">Register</a>
+                <a routerLink="/resetpassword" class="btn btn-link">Rest Password</a>
             </div>
         </form>
     </div>
