@@ -21,6 +21,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { fakeBackendProvider } from './_helpers';
 import { AuthGuard } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { PostFeedComponent } from './post-feed/post-feed.component';
 import { PostCardComponent } from './post-card/post-card.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -36,6 +38,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     SidebarComponent,
     PostFormComponent,
     UsercardComponent,
+    EditProfileComponent,
+    ProfileComponent,
     PostFeedComponent,
     PostCardComponent
   ],
@@ -50,9 +54,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       { path: 'register', component: RegisterComponent },
       { path: 'resetpassword', component: ResetPasswordComponent},
       { path: 'login', component: LoginComponent },
-      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard] },
+      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
+      { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
       { path: 'feed', component: PostFeedComponent }
-      // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
 
     ])
   ],
