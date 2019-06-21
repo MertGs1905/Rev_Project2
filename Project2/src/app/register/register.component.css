@@ -17,6 +17,10 @@
     box-shadow: 4px 4px 5px #ccc;
 }
 
+#jumbotron h1 {
+    cursor: default;
+}
+
 #btn-container {
     display: flex;
     flex-direction: row;

@@ -11,6 +11,10 @@ body {
     overflow: hidden;
 }
 
+p {
+    cursor: default;
+}
+
 #content {    
     overflow-y: scroll;
     height: 100%;
