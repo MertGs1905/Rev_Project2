@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from '../services/User';
 import { CurrentUserService } from '../services/current-user.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
@@ -12,13 +14,19 @@ export class ResetPasswordComponent implements OnInit {
   email = '';
   password = '';
   username = '';
+  passwordForm: FormGroup;
 
-  constructor(private resetpass: CurrentUserService) { }
+  constructor(private resetpass: CurrentUserService,
+              private formBuilder: FormBuilder,
+              private http: HttpClient) { }
 
   ngOnInit() {
+    this.passwordForm = this.formBuilder.group({
+      email: ['', Validators.required]
+  });
   }
 
-  forgetpass(){
+  forgetpass() {
     this.user = {
       email: this.email,
       password: this.password,

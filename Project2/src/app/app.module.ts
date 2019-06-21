@@ -21,9 +21,16 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { fakeBackendProvider } from './_helpers';
 import { AuthGuard } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+<<<<<<< HEAD
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ProfileComponent } from './profile/profile.component';
+||||||| merged common ancestors
+=======
 import { PostFeedComponent } from './post-feed/post-feed.component';
 import { PostCardComponent } from './post-card/post-card.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
+>>>>>>> d282ef23b6b9a581847bbea0111f843377db38d7
 
 @NgModule({
   declarations: [
@@ -31,25 +38,44 @@ import { PostCardComponent } from './post-card/post-card.component';
     RegisterComponent,
     NavbarComponent,
     LoginComponent,
+    ResetPasswordComponent,
     SidebarComponent,
     PostFormComponent,
+<<<<<<< HEAD
+    UsercardComponent,
+    EditProfileComponent,
+    ProfileComponent
+||||||| merged common ancestors
+    UsercardComponent
+=======
     UsercardComponent,
     PostFeedComponent,
     PostCardComponent
+>>>>>>> d282ef23b6b9a581847bbea0111f843377db38d7
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    InfiniteScrollModule,
     RouterModule.forRoot([
       { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent},
       { path: 'login', component: LoginComponent },
+<<<<<<< HEAD
+      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
+      { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
+||||||| merged common ancestors
+      { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
+      // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
+=======
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'feed', component: PostFeedComponent }
       // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
 
+>>>>>>> d282ef23b6b9a581847bbea0111f843377db38d7
     ])
   ],
   providers: [
