@@ -5,7 +5,8 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { IUser } from '../services/User';
 import { isBuffer, isUndefined } from 'util';
 
-let users = [{ id: 1, firstName: 'Chris', lastName: 'Sinko', username: 'test', password: 'test' },
+let users = [
+{ id: 1, firstName: 'Chris', lastName: 'Sinko', username: 'test', password: 'test' },
 { id: 2, firstName: 'Jacob', lastName: 'Shanklin', username: 'Admin', password: '123!' },
 { id: 3, firstName: 'Mert', lastName: 'Altun', username: 'Admin2', password: '123!' },
 { id: 4, firstName: 'Mike', lastName: 'Perkins', username: 'Admin3', password: '123!' },
