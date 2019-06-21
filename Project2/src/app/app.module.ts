@@ -31,6 +31,7 @@ import { PostCardComponent } from './post-card/post-card.component';
     RegisterComponent,
     NavbarComponent,
     LoginComponent,
+    ResetPasswordComponent,
     SidebarComponent,
     PostFormComponent,
     UsercardComponent,
