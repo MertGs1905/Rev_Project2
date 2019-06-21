@@ -28,7 +28,7 @@
                     type="password"
                     formControlName="password"
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                    [ngClass]="{ 'is-invalid': submitted && !!f.password.errors }"
                 />
                 <div
                     *ngIf="submitted && !!f.password.errors"
