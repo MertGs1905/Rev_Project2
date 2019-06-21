@@ -2,12 +2,19 @@
     display: flex;
     justify-content: center;
     padding-top: 20px;
-    height: 90%;
+    height: 100%;
     margin: 0;
+    
 }
 
 #jumbotron {
+    padding: 0;
+    padding: 15px;
     width: 75%;
+    height: 90%;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 4px 4px 5px #ccc;
 }
 
 #btn-container {

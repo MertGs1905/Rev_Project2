@@ -11,9 +11,9 @@ body {
     overflow: hidden;
 }
 
-#content {
-    overflow: hidden;
+#content {    
     overflow-y: scroll;
+    height: 100%;
 }
 
 #main-container {
