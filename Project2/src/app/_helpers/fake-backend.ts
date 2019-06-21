@@ -5,7 +5,24 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { IUser } from '../services/User';
 import { isBuffer, isUndefined } from 'util';
 
+<<<<<<< HEAD
+let users = [
+{ id: 1, firstName: 'Chris', lastName: 'Sinko', username: 'test', password: 'test' },
+{ id: 2, firstName: 'Jacob', lastName: 'Shanklin', username: 'Admin', password: '123!' },
+{ id: 3, firstName: 'Mert', lastName: 'Altun', username: 'Admin2', password: '123!' },
+{ id: 4, firstName: 'Mike', lastName: 'Perkins', username: 'Admin3', password: '123!' },
+{ id: 5, firstName: 'Tyree', lastName: 'Graham', username: 'Admin4', password: '123!' }
+];
+||||||| merged common ancestors
+let users = [{ id: 1, firstName: 'Chris', lastName: 'Sinko', username: 'test', password: 'test' },
+{ id: 2, firstName: 'Jacob', lastName: 'Shanklin', username: 'Admin', password: '123!' },
+{ id: 3, firstName: 'Mert', lastName: 'Altun', username: 'Admin2', password: '123!' },
+{ id: 4, firstName: 'Mike', lastName: 'Perkins', username: 'Admin3', password: '123!' },
+{ id: 5, firstName: 'Tyree', lastName: 'Graham', username: 'Admin4', password: '123!' }
+];
+=======
 let users = JSON.parse(localStorage.getItem('users')) || [];
+>>>>>>> d282ef23b6b9a581847bbea0111f843377db38d7
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {

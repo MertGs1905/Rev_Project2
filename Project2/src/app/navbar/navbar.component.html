@@ -1,25 +1,32 @@
-
-  <nav class="navbar navbar-default " *ngIf="!currentUser">
-      <a class="nav navbar-brand">{{title}}</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item">
-        <a routerLink="/register">Register</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/login">Login</a>
-      </li>
-    </ul>
-  </nav>
-
-  <nav class="navbar navbar-default " *ngIf="currentUser">
-    <a class="nav navbar-brand">Hello, {{currentUser.firstName}}!</a>
+<nav class="navbar navbar-default " *ngIf="!currentUser">
+  <a class="nav navbar-brand">{{title}}</a>
   <ul class="nav navbar-nav">
     <li class="nav-item">
+<<<<<<< HEAD
+      <a routerLink="/register">Register</a>
+||||||| merged common ancestors
+        <a routerLink="/post">Posts</a>
+=======
         <a routerLink="/post">Add a post</a>
+>>>>>>> d282ef23b6b9a581847bbea0111f843377db38d7
     </li>
     <li class="nav-item">
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      <a routerLink="/login">Login</a>
     </li>
   </ul>
 </nav>
 
+<nav class="navbar navbar-default " *ngIf="currentUser">
+  <a class="nav navbar-brand">Hello, {{currentUser.firstName}}!</a>
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <a routerLink="/post">Posts</a>
+    </li>
+    <!-- <li class="nav-item">
+      <a class="d-block" routerLink="/profile">Profile</a>
+    </li> -->
+    <li class="nav-item">
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</nav>
