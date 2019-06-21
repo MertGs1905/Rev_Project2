@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error: string;
+  success: string;
 
   constructor(
       private login: CurrentUserService,
@@ -33,7 +34,9 @@ export class LoginComponent implements OnInit {
             if (this.authenticationService.currentUserValue) {
                 this.router.navigate(['/']);
             }
-
+            if (this.route.snapshot.queryParams.registered) {
+                this.success = 'Registration successful';
+            }
        }
 
   ngOnInit() {
@@ -48,6 +51,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
       this.submitted = true;
+
+      this.error = null;
+      this.success = null;
 
       if (this.loginForm.invalid) {
           return;
@@ -72,8 +78,6 @@ export class LoginComponent implements OnInit {
       password: this.password,
       username: this.username
     };
-
-    //this.login.setCurrentUser(this.user);
 
   }
 

@@ -1,0 +1,11 @@
+
+<div id="feed-container" class="container-fluid">
+    <div id="post-feed" class="container">
+        <app-post-card
+          *ngFor="let post of posts"
+          [postText]="post.text"
+          [userName]="post.username"
+        ></app-post-card>
+    </div>
+</div>
+

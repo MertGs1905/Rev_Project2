@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IUser } from '../services/User';
-import { CurrentUserService } from '../services/current-user.service';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../services';
 
@@ -12,14 +11,15 @@ import { AuthenticationService } from '../services';
 export class UsercardComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   currentUser: IUser;
+  userImage: string;
   constructor(private userService: AuthenticationService) {
     this.subscription = this.userService.currentUser.subscribe(user => {
       if (user) {
         this.currentUser = user;
+        this.userImage = 'https://images.pexels.com/photos/2461991/pexels-photo-2461991.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
       } else {
         this.currentUser = null;
       }
-      console.log(this.currentUser);
     });
   }
 
@@ -30,5 +30,4 @@ export class UsercardComponent implements OnInit, OnDestroy {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
-
 }

@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, of } from 'rxjs';
-import { IUser } from './User';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CurrentUserService {
-  private subject = new Subject<IUser>();
-  constructor() { }
+    constructor(private http: HttpClient) { }
 
-  setCurrentUser(user: IUser) {
-    this.subject.next(user);
-  }
+    getAll() {
+        return this.http.get<any[]>(`${environment.apiUrl}/users`);
+    }
 
-  getCurrentUser(): Observable<IUser> {
-    return this.subject.asObservable();
-  }
+    register(user) {
+        return this.http.post(`${environment.apiUrl}/users/register`, user);
+    }
+
+    delete(id) {
+        return this.http.delete(`${environment.apiUrl}/users/${id}`);
+    }
 }

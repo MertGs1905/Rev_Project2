@@ -1,7 +1,8 @@
-<div class="container-fluid">
+<div id="login-container" class="container-fluid">
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
-    <h2>Login</h2>
-    <div class="jumbotron min-vh-100">
+    <div *ngIf="success" class="alert alert-success">{{success}}</div>
+    <div id="jumbotron" class="jumbotron min-vh-100">
+            <h1 class="display-4">Login</h1>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -25,7 +26,7 @@
                 <label for="password">Password</label>
                 <input
                     type="password"
-                    formControlName="password"
+             gitame="password"
                     class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                 />
@@ -47,6 +48,7 @@
                     Login
                 </button>
                 <a routerLink="/register" class="btn btn-link">Register</a>
+                <a routerLink="/resetpassword" class="btn btn-link">Rest Password</a>
             </div>
         </form>
     </div>
