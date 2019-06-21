@@ -9,9 +9,10 @@
 .navbar-brand {
     font-size: 1.5em;
     color: white;
+    width: 150px;
+    text-align: center;
 }
 .nav.navbar a {
-
     color: white;
 }
 
@@ -19,9 +20,23 @@
     font-size: 1.25em;
     color: white;
     background: rgb(27, 162, 240);
+    padding-left: 10px;
 }
 
 .nav-item a:hover{
     color: black;
     background: rgb(27, 162, 240);
+}
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+}
+
+#main-nav {
+    display: flex;    
+    flex-direction: row;
+    flex-grow: 1;    
 }
