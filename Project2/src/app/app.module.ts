@@ -32,6 +32,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RegisterComponent,
     NavbarComponent,
     LoginComponent,
+    ResetPasswordComponent,
     SidebarComponent,
     PostFormComponent,
     UsercardComponent,
@@ -47,6 +48,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RouterModule.forRoot([
       { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent},
       { path: 'login', component: LoginComponent },
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'feed', component: PostFeedComponent }
