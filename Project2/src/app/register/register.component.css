@@ -12,9 +12,8 @@
     padding: 15px;
     width: 75%;
     height: 90%;
-    -moz-box-shadow: 3px 3px 5px 6px #ccc;
-    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-    box-shadow: 4px 4px 5px #ccc;
+    background-color: rgba(0, 0, 0, 0.6);    
+    color: white;
 }
 
 #jumbotron h1 {
