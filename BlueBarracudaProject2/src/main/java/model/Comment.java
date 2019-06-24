@@ -1,9 +1,31 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="User")
 public class Comment {
+	
+	
 	User user;
-	String comment;
-	Ratings rating;
+	
+	@Id
+	@Column(name="comment_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int commentId; 
+	
+	@Column(name="comment")
+	private String comment;	
+	
+	@Column(name="rating", nullable=true)
+	private Ratings rating;
+	
+	
 	public Comment(User user, String comment, Ratings rating) {
 		super();
 		this.user = user;

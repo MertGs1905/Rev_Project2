@@ -5,13 +5,14 @@ import java.util.Arrays;
 
 public class Profile {
 	User user;
-	String email;
-	String firstName;
-	String lastName;
-	String occupation;
-	Timestamp birthdate;
-	String hobbies;
+	private String email;
+	private String firstName;
+	private String lastName;
+	private String occupation;
+	private Timestamp birthdate;
+	private String hobbies;
 	byte[] image;
+	
 	public Profile(User user, String email, String firstName, String lastName, String occupation, Timestamp birthdate,
 			String hobbies, byte[] image) {
 		super();

@@ -1,8 +1,28 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="User")
 public class User {
-	String username;
-	String password;
+	
+	//String Fname;
+	//String Lname;
+	@Id
+	@Column(name="user_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int userId;
+	
+	@Column(name="user_name", unique=true, nullable=false)
+	private String username;
+	
+	@Column(name="password", unique=true, nullable=false)
+	private String password;
 	
 	public User(String username, String password) {
 		super();
