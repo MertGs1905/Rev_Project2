@@ -3,7 +3,12 @@
       src="https://images.pexels.com/photos/162140/duckling-birds-yellow-fluffy-162140.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500" 
       alt="user image">
       <div id="post-card-body">
-          <h4>{{userName}}</h4>
-          <p>{{postText}}</p>
+          <h4>{{post.username}}</h4>
+          <p>{{post.text}}</p>
+          <div>
+            <p>{{post.likes}}</p>
+            <p>{{post.dislikes}}</p>
+          </div>
+          
       </div>      
 </div>

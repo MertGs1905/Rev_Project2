@@ -1,4 +1,7 @@
+import { IUser } from './User';
+
 export interface IPost {
-    username: string;
-    text: string;
+    user: IUser;
+    post: string;
+    ratings: IRating;
 }
