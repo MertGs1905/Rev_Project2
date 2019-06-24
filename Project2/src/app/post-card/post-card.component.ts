@@ -10,6 +10,7 @@ import { IPost } from '../services/Post';
 export class PostCardComponent implements OnInit {
   @Input() userName: string;
   @Input() postText: string;
+  
   constructor() { }
 
   ngOnInit() {
