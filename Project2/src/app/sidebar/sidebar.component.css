@@ -18,3 +18,7 @@
     transition: all 0.3s;
     padding: 5px;
 }
+
+#sidebar-header h3{
+    cursor: default;
+} 

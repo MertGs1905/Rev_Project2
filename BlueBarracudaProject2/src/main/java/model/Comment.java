@@ -5,20 +5,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="comments")
+@Table(name="User")
 public class Comment {
-	@Id
-	@Column(name="food_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	int commentId;
-	@OneToMany
+	
+	
 	User user;
-	String comment;
-	Ratings rating;
+	
+	@Id
+	@Column(name="comment_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int commentId; 
+	
+	@Column(name="comment")
+	private String comment;	
+	
+	@Column(name="rating", nullable=true)
+	private Ratings rating;
+	
+	
 	public Comment(User user, String comment, Ratings rating) {
 		super();
 		this.user = user;

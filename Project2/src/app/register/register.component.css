@@ -1,9 +1,29 @@
-#register-container {
+#register-container {   
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    height: 100%;
+    margin: 0;
+    
 }
 
 #jumbotron {
+    padding: 0;
+    padding: 15px;
     width: 75%;
+    height: 90%;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 4px 4px 5px #ccc;
+}
+
+#jumbotron h1 {
+    cursor: default;
+}
+
+#btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
 }
