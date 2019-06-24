@@ -16,7 +16,7 @@ import model.Comment;
 import model.Post;
 import repository.PostRepo;
 
-@CrossOrigin(origins="hhtp://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 @Controller
 @RequestMapping(value="/Project2")
 public class PostController {
