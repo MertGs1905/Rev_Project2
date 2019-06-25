@@ -18,7 +18,7 @@ import repository.PostRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/Project2")
+@RequestMapping(value="/Project2/post")
 public class PostController {
 	
 	private PostRepo postRepo;

@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+	<context:annotation-config />
+	<!-- <context:component-scan base-package="com.example.repository"/> -->
+	<context:component-scan base-package="*" />
+
+	<tx:annotation-driven />
 	
-	<context:annotation-config/>
-	 <context:component-scan base-package="*"/>
-<!-- 	 <tx:annotation-driven/> -->
-<!-- 	 <mvc:annotation-driven/> -->
-		
-		
-	
+	<!-- THIS IS THE ONLY THING WE NEED FOR SPRING MVC SPECIFICALLY -->
+	<mvc:annotation-driven/>
+
 	<!-- DATASOURCE This bean is a JDBC instance. -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
-			value="jdbc:oracle:thin:@revychan.c4wt8faaxlgp.us-east-2.rds.amazonaws.com:1521:orcl" />
-		<property name="username" value="pokemondb" />
+			value="jdbc:oracle:thin:@revaturedb.c39ybozzntjs.us-east-2.rds.amazonaws.com:1521:orcl" />
+		<property name="username" value="blueBarracuda" />
 		<property name="password" value="p4ssw0rd" />
 	</bean>
 
@@ -25,7 +32,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="model" />
+		<property name="packagesToScan" value="com.example.model" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
@@ -45,6 +52,3 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 </beans>
-	
-
-
