@@ -14,6 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   email = '';
   password = '';
   username = '';
+  userId: number;
   passwordForm: FormGroup;
 
   constructor(private resetpass: CurrentUserService,
@@ -30,7 +31,8 @@ export class ResetPasswordComponent implements OnInit {
     this.user = {
       email: this.email,
       password: this.password,
-      username: this.username
+      username: this.username,
+      user_id: this.userId
     };
 
 

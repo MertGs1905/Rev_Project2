@@ -5,7 +5,8 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { IUser } from '../services/User';
 import { isBuffer, isUndefined } from 'util';
 
-let users = JSON.parse(localStorage.getItem('users')) || [];
+// let users = JSON.parse(localStorage.getItem('users')) || [];
+const users = JSON.parse(localStorage.getItem('users')) || [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {

@@ -40,7 +40,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UsercardComponent,
     EditProfileComponent,
     ProfileComponent,
-    UsercardComponent,
     PostFeedComponent,
     PostCardComponent
   ],
@@ -51,14 +50,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HttpClientModule,
     InfiniteScrollModule,
     RouterModule.forRoot([
-      { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
       { path: 'resetpassword', component: ResetPasswordComponent},
       { path: 'login', component: LoginComponent },
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
       { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
       { path: 'feed', component: PostFeedComponent }
-      // { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
 
     ])
   ],
