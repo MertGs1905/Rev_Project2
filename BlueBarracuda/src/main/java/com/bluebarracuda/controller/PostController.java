@@ -17,7 +17,7 @@ import com.bluebarracuda.repo.PostRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/Project2/post")
+@RequestMapping(value="post")
 public class PostController {
 	
 	private PostRepo postRepo;
@@ -32,8 +32,9 @@ public class PostController {
 		this.postRepo = postRepo;	
 	}
 	
-	@GetMapping(value="/getAllPost.app")
-	public @ResponseBody List<Post> getAllPost(){
+	@GetMapping(value="/getAllPosts.app")
+	public @ResponseBody List<Post> getAllPosts(){
+		System.out.println("Inside Get all posts");
 		return postRepo.SelectAll();
 		
 	}

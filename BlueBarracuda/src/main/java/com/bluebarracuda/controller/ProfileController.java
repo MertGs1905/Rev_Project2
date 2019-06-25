@@ -17,7 +17,7 @@ import com.bluebarracuda.repo.ProfileRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/Project2")
+@RequestMapping(value="/profile")
 public class ProfileController {
 
 	private ProfileRepo profileRepo;

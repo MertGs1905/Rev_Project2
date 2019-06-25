@@ -20,7 +20,7 @@ import com.bluebarracuda.repo.RatingRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/Project2")
+@RequestMapping(value="api/rating")
 public class RatingController {
 	
 
