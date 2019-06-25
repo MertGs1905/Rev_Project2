@@ -1,5 +1,7 @@
+import { UserProfile } from './Profile';
+
 export interface IUser {
-    email: string;
+    profile: UserProfile;
     password: string;
     username: string;
     user_id: number;

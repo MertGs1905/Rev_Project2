@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services';
 import { IUser } from '../services/User';
 import { Subscription, Observable, of } from 'rxjs';
+import { UserProfile } from '../services/Profile';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,7 @@ import { Subscription, Observable, of } from 'rxjs';
 export class ProfileComponent implements OnInit {
   subscription: Subscription;
   currentUser: IUser;
+  userProfile: UserProfile;
   bannerImage = 'assets/Cool-Cat-Cropped.jpg';
 
   constructor(private userService: AuthenticationService) {

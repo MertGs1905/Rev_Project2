@@ -15,7 +15,7 @@ import com.ram.service.MailService;
 @RequestMapping(value="/Project2/email")
 public class EmailController {
 	
-	  private MailService mailServ;
+		private MailService mailServ;
 	    private MailService mail;
 	
 	public EmailController() {
