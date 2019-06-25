@@ -17,7 +17,7 @@ import com.bluebarracuda.repo.UserRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/BlueBarracuda")
+@RequestMapping(value="*")
 public class UserController {
 	
 
@@ -33,7 +33,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/getAllUsers.app")
-	public @ResponseBody List<User> getAllUser(){
+	public @ResponseBody List<User> getAllUsers(){
 		System.out.println("In get All user");
 		return userRepo.selectAll();
 	}
