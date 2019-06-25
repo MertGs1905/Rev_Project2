@@ -3,6 +3,7 @@ import { IUser } from '../services/User';
 import { CurrentUserService } from '../services/current-user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { UserProfile } from '../services/Profile';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,6 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   password = '';
   username = '';
   userId: number;
+  userProfile: UserProfile;
   passwordForm: FormGroup;
 
   constructor(private resetpass: CurrentUserService,
@@ -29,10 +31,10 @@ export class ResetPasswordComponent implements OnInit {
 
   forgetpass() {
     this.user = {
-      email: this.email,
       password: this.password,
       username: this.username,
-      user_id: this.userId
+      user_id: this.userId,
+      profile: this.userProfile
     };
 
 
