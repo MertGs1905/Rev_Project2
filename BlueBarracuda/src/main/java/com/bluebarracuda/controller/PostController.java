@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bluebarracuda.model.Post;
+import com.bluebarracuda.repo.PostRepo;
+
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 @RequestMapping(value="/Project2/post")
