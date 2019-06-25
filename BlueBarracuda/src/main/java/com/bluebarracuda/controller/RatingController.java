@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.Ratings;
-import repository.RatingRepo;
+import com.bluebarracuda.model.Ratings;
+import com.bluebarracuda.repo.RatingRepo;
+
 
 
 
@@ -23,7 +24,7 @@ import repository.RatingRepo;
 public class RatingController {
 	
 
-	private RatingRepo ratingRepo;
+	private com.bluebarracuda.repo.RatingRepo ratingRepo;
 	
 	public RatingController() {
 		
