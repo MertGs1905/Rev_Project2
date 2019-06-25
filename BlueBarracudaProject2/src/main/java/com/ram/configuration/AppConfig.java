@@ -1,4 +1,4 @@
-package com.email.configuration;
+package com.ram.configuration;
 
 import java.util.Properties;
 

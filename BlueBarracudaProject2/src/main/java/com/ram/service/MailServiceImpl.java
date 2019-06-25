@@ -1,4 +1,4 @@
-package com.email.service.copy;
+package com.ram.service;
 
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;

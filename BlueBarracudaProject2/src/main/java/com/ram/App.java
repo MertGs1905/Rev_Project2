@@ -1,11 +1,11 @@
-package com.email;
+package com.ram;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import com.email.configuration.AppConfig;
-import com.email.service.MailService;
-import com.email.service.MailServiceImpl;
+import com.ram.configuration.AppConfig;
+import com.ram.service.MailService;
+import com.ram.service.MailServiceImpl;
 
 public class App
 {
@@ -23,7 +23,7 @@ public class App
 	}
 	
 	
-	public static void sendUserMail(String email)
+	public static void main(String[] args)
 	{
 		AbstractApplicationContext context = new AnnotationConfigApplicationContext(
 				AppConfig.class);

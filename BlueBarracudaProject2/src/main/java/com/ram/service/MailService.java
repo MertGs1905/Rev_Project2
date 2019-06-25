@@ -1,4 +1,4 @@
-package com.email.service.copy;
+package com.ram.service;
 
 public interface MailService
 {
