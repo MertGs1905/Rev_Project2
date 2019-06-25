@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Configuration
-@ComponentScan(basePackages = "com.ram")
+@ComponentScan(basePackages = "com")
 public class AppConfig
 {
 
