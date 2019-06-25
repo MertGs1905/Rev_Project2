@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bluebarracuda.model.Comment;
 
-@Repository("userRepo")
+@Repository("commentRepo")
 @Transactional
 public class CommentRepo {
 		
