@@ -50,5 +50,10 @@ public class RatingController {
 	public @ResponseBody Ratings getRatingByUri(@PathVariable("num") int num) {
 		return ratingRepo.selectById(num);
 	}
+	
+	@PostMapping(value="/addRating.app")
+	public @ResponseBody void addRating(Rating rate) {
+		ratingRepo.insert(rate);
+	}
 
 }

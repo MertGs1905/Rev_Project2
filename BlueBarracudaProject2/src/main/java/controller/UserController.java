@@ -46,4 +46,19 @@ public class UserController {
 	public @ResponseBody User getUserByUri(@PathVariable("num") int num) {
 		return userRepo.selectById(num);
 	}
+	
+	@PostMapping(value="/registerUser.app")
+	public @ResponseBody void addNewUser(User user) {
+		userRepo.insert(user);
+	}
+	
+	@PostMapping(value="/updatePassword.app")
+	public @ResponseBody void updatePassword(User user) {
+		userRepo.update(user);
+	}
+	
+	@postMapping(value="/removeUser.app")
+	public @ResponseBody void removeUser(User user) {
+		userRepo.delete(user);
+	}
 }
