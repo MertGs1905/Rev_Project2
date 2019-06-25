@@ -50,7 +50,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HttpClientModule,
     InfiniteScrollModule,
     RouterModule.forRoot([
-      { path: '', component: PostFormComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent },
       { path: 'resetpassword', component: ResetPasswordComponent},
       { path: 'login', component: LoginComponent },

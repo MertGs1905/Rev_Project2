@@ -1,4 +1,4 @@
-package controller;
+package com.bluebarracuda.controller;
 
 import java.util.List;
 
@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import model.User;
-import repository.UserRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
@@ -45,20 +42,5 @@ public class UserController {
 	@PostMapping(value="{num}/getUserByUri.app")
 	public @ResponseBody User getUserByUri(@PathVariable("num") int num) {
 		return userRepo.selectById(num);
-	}
-	
-	@PostMapping(value="/registerUser.app")
-	public @ResponseBody void addNewUser(User user) {
-		userRepo.insert(user);
-	}
-	
-	@PostMapping(value="/updatePassword.app")
-	public @ResponseBody void updatePassword(User user) {
-		userRepo.update(user);
-	}
-	
-	@postMapping(value="/removeUser.app")
-	public @ResponseBody void removeUser(User user) {
-		userRepo.delete(user);
 	}
 }

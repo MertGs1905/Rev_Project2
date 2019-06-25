@@ -1,4 +1,4 @@
-package controller;
+package com.bluebarracuda.controller;
 
 import java.util.List;
 
@@ -49,11 +49,6 @@ public class RatingController {
 	@PostMapping(value="{num}/getRatingByUri.app")
 	public @ResponseBody Ratings getRatingByUri(@PathVariable("num") int num) {
 		return ratingRepo.selectById(num);
-	}
-	
-	@PostMapping(value="/addRating.app")
-	public @ResponseBody void addRating(Rating rate) {
-		ratingRepo.insert(rate);
 	}
 
 }
