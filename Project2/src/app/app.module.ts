@@ -55,7 +55,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       { path: 'login', component: LoginComponent },
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
       { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
-      { path: 'feed', component: PostFeedComponent }
+      { path: 'feed', component: PostFeedComponent, canActivate: [AuthGuard] }
 
     ])
   ],

@@ -16,8 +16,7 @@ import com.bluebarracuda.repo.UserRepo;
 @CrossOrigin(origins="*")
 @Controller
 @RequestMapping(value="/user")
-public class UserController {
-	
+public class UserController {	
 
 	private UserRepo userRepo;
 	
@@ -37,13 +36,14 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/getUserById")
-	public @ResponseBody User getUserById(@RequestParam("id") int num) {
-		return userRepo.selectById(num);
+	public @ResponseBody User getUserById(@RequestParam("userId") int userId) {
+		return userRepo.selectById(userId);
 	}
 	
-	@PostMapping(value="{num}/getUserByUri")
-	public @ResponseBody User getUserByUri(@PathVariable("num") int num) {
-		return userRepo.selectById(num);
+	@PostMapping(value="/getUserByUsername")
+	public @ResponseBody User getUserByUsername(@RequestParam("username") String username) {
+		return userRepo.selectByUsername(username);
 	}
+	
 	
 }
