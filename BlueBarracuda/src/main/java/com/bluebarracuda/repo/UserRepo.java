@@ -26,7 +26,6 @@ public class UserRepo {
 
 	@Autowired
 	public UserRepo(SessionFactory sesFact) {
-		super();
 		this.sesFact = sesFact;
 	}
 	
@@ -54,6 +53,7 @@ public class UserRepo {
 	}
 	
 	public List<User> selectAll(){
+		System.out.println();
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	

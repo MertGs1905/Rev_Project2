@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-//@RequestMapping(value="/Project2/email")
 public class EmailController {
 		
 		private MailService mail;
@@ -29,7 +28,7 @@ public class EmailController {
 	}
 	
 	
-	@RequestMapping(value = "/resetPassword.app", method = RequestMethod.POST)
+	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
 	public @ResponseBody void doRestPwd() throws JsonProcessingException {
 	
 			System.out.println("in the resetmapper");

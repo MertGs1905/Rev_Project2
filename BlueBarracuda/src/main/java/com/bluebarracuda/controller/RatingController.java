@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bluebarracuda.model.Ratings;
+import com.bluebarracuda.model.Rating;
 import com.bluebarracuda.repo.RatingRepo;
 
 
@@ -37,18 +37,18 @@ public class RatingController {
 	}
 	
 	@GetMapping(value="/getAllRatings")
-	public @ResponseBody List<Ratings> getAllRating(){
+	public @ResponseBody List<Rating> getAllRating(){
 		return ratingRepo.selectAll();
 	}
 	
 
 	@PostMapping(value="/getRatingById")
-	public @ResponseBody Ratings getRatingById(@RequestParam("id") int num) {
+	public @ResponseBody Rating getRatingById(@RequestParam("id") int num) {
 		return ratingRepo.selectById(num);
 	}
 	
 	@PostMapping(value="{num}/getRatingByUri")
-	public @ResponseBody Ratings getRatingByUri(@PathVariable("num") int num) {
+	public @ResponseBody Rating getRatingByUri(@PathVariable("num") int num) {
 		return ratingRepo.selectById(num);
 	}
 
