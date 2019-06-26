@@ -2,10 +2,10 @@ package com.bluebarracuda.model;
 
 
 public class Post {
-	User user;
+	String user;
 	String post;
 	Ratings rating;
-	public Post(User user, String post, Ratings rating) {
+	public Post(String user, String post, Ratings rating) {
 		super();
 		this.user = user;
 		this.post = post;

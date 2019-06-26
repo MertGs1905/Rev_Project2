@@ -17,7 +17,7 @@ import com.bluebarracuda.repo.RatingRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="api/rating")
+@RequestMapping(value="/rating")
 public class RatingController {
 	
 
@@ -33,18 +33,18 @@ public class RatingController {
 		this.ratingRepo = ratingRepo;
 	}
 	
-	@GetMapping(value="/getAllRating.app")
+	@GetMapping(value="/getAllRatings")
 	public @ResponseBody List<Ratings> getAllRating(){
 		return ratingRepo.selectAll();
 	}
 	
 
-	@PostMapping(value="/getRatingById.app")
+	@PostMapping(value="/getRatingById")
 	public @ResponseBody Ratings getRatingById(@RequestParam("id") int num) {
 		return ratingRepo.selectById(num);
 	}
 	
-	@PostMapping(value="{num}/getRatingByUri.app")
+	@PostMapping(value="{num}/getRatingByUri")
 	public @ResponseBody Ratings getRatingByUri(@PathVariable("num") int num) {
 		return ratingRepo.selectById(num);
 	}
