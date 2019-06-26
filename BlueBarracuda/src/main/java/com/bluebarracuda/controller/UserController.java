@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.bluebarracuda.model.Profile;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 
-
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping(value="/user")
 public class UserController {	
@@ -31,7 +32,7 @@ public class UserController {
 	
 	@GetMapping(value="/getAllUsers")
 	public @ResponseBody List<User> getAllUsers(){
-		System.out.println("In get All user");
+		System.out.println("All user controller");
 		return userRepo.selectAll();
 	}
 	
@@ -44,4 +45,28 @@ public class UserController {
 	public @ResponseBody User getUserByUsername(@RequestParam("username") String username) {
 		return userRepo.selectByUsername(username);
 	}
+<<<<<<< HEAD
+||||||| merged common ancestors
+	@PostMapping(value="/authenticate")
+	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
+		System.out.println("In Auth, Username input: " + username);
+		return userRepo.selectByUsername(username);
+	}
+=======
+	@PostMapping(value="/authenticate")
+	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
+		System.out.println("In Auth, Username input: " + username);
+		User tmp = userRepo.selectByUsername(username);
+		if(tmp.getPassword() == password)
+			return userRepo.selectByUsername(username);
+		else return null;
+	}
+	@PostMapping(value="/register")
+	public @ResponseBody void register(@RequestParam("username") String user) {
+		System.out.println("In Auth, Username input: " + user);
+		// userRepo.insert(user);
+		System.out.println("User Inserted");
+
+	}
+>>>>>>> 93799bd7a37523bc02aa1473c6475cede2e7327d
 }
