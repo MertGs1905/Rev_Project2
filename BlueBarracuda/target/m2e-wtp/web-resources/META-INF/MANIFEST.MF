@@ -1,18 +1,5 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
-Built-By: jacobshanklin
-Build-Jdk: 1.8.0_211
-Created-By: Maven Integration for Eclipse
-
-=======
-Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: arnol
 Build-Jdk: 1.8.0_211
-=======
-Built-By: mgper
-Build-Jdk: 1.8.0_212
->>>>>>> 3e63eba5b39d1180136e185a5a0414ba5e12b69e
 Created-By: Maven Integration for Eclipse
 
->>>>>>> 87248b6c408d89b85a36489b84337a37cdd3724e

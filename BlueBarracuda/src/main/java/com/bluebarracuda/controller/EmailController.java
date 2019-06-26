@@ -1,10 +1,6 @@
 package com.bluebarracuda.controller;
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 3e63eba5b39d1180136e185a5a0414ba5e12b69e
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,11 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 public class EmailController {
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> 3e63eba5b39d1180136e185a5a0414ba5e12b69e
+
 		private MailService mail;
 	
 	public EmailController() {
@@ -35,11 +27,9 @@ public class EmailController {
 	}
 	
 	
-<<<<<<< HEAD
+
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-=======
-	@RequestMapping(value = "/resetPassword.app", method = RequestMethod.POST)
->>>>>>> 3e63eba5b39d1180136e185a5a0414ba5e12b69e
+
 	public @ResponseBody void doRestPwd() throws JsonProcessingException {
 	
 			System.out.println("in the resetmapper");
