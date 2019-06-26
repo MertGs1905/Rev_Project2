@@ -29,6 +29,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return showusers();
                 case url.endsWith('/users/register') && method === 'POST':
                     return register();
+                case url.endsWith('/users/7') && method === 'GET':
+                    return getUserById(0);
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -66,6 +68,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function showusers() {
             return ok(users);
+        }
+        function getUserById(id) {
+            return ok(users.find(x => x.id === id));
         }
         // helper functions
 
