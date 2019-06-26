@@ -19,7 +19,7 @@ import com.bluebarracuda.repo.CommentRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/BlueBarracuda")
+@RequestMapping(value="comment/")
 public class CommentController {
 
 	private CommentRepo commentRepo;

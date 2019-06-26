@@ -50,6 +50,7 @@ public class PostRepo {
 	}
 	
 	public List<Post> SelectAll(){
+		System.out.println("Inside selectAll Posts");
 		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list(); 
 				
 	}

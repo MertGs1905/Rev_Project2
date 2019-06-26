@@ -17,11 +17,11 @@ import com.bluebarracuda.repo.RatingRepo;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/Project2")
+@RequestMapping(value="api/rating")
 public class RatingController {
 	
 
-	private RatingRepo ratingRepo;
+	private com.bluebarracuda.repo.RatingRepo ratingRepo;
 	
 	public RatingController() {
 		

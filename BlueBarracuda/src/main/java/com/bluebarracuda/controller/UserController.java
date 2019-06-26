@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 
-@CrossOrigin(origins="http://localhost:4200")
+
+@CrossOrigin(origins="*")
 @Controller
-@RequestMapping(value="/BlueBarracuda")
+@RequestMapping(value="/user")
 public class UserController {
 	
 
@@ -32,8 +33,9 @@ public class UserController {
 		this.userRepo = userRepo;
 	}
 	
-	@GetMapping(value="/getAllUser.app")
-	public @ResponseBody List<User> getAllUser(){
+	@GetMapping(value="/getAllUsers.app")
+	public @ResponseBody List<User> getAllUsers(){
+		System.out.println("In get All user");
 		return userRepo.selectAll();
 	}
 	
