@@ -2,7 +2,7 @@
 <div class="card bg-dark text-white overflow-hidden" style="height: 300px">
   <img src="{{bannerImage}}" class="img-fluid card-img" alt="...">
   <div class="card-img-overlay">
-    <h3 class="card-title">{{currentUser.firstName}} {{currentUser.lastName}}</h3>
+    <h3 class="card-title">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</h3>
     <p class="card-text"></p>
     <p class="card-text"></p>
   </div>
@@ -19,7 +19,7 @@
       <label for="name" class="col-2 col-form-label">Name</label>
       <div class="col-4">
         <input type="text" class="form-control" id="name"
-          placeholder="{{currentUser.firstName}} {{currentUser.lastName}}">
+          placeholder="{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}">
       </div>
 
       <div class="custom-control custom-radio col-auto">
@@ -41,7 +41,7 @@
     <div class="form-group row align-items-center">
       <label for="email" class="col-2 col-form-label">Email</label>
       <div class="col-4">
-        <input type="email" class="form-control" id="email" placeholder="{{currentUser.email}} {{currentUser.email}}">
+        <input type="email" class="form-control" id="email" placeholder="{{currentUser.profile.userEmail}} {{currentUser.profile.userEmail}}">
       </div>
 
       <div class="custom-control custom-radio col-auto">
@@ -64,7 +64,7 @@
       <label for="birthday" class="col-2 col-form-label">Birthday</label>
       <div class="col-4">
         <input type="date" class="form-control" id="birthday"
-          placeholder="{{currentUser.birthday}} {{currentUser.birthday}}">
+          placeholder="{{currentUser.profile.birthday}} {{currentUser.profile.birthday}}">
       </div>
 
       <div class="custom-control custom-radio col-auto">
@@ -87,7 +87,7 @@
       <label for="profession" class="col-2 col-form-label">Profession</label>
       <div class="col-4">
         <input type="text" class="form-control" id="profession"
-          placeholder="{{currentUser.profession}} {{currentUser.profession}}">
+          placeholder="{{currentUser.profile.occupation}} {{currentUser.profile.occupation}}">
       </div>
 
       <div class="custom-control custom-radio col-auto">
@@ -109,7 +109,7 @@
     <div class="form-group row align-items-center">
       <label for="hobby" class="col-2 col-form-label">Hobby</label>
       <div class="col-4">
-        <input type="text" class="form-control" id="hobby" placeholder="{{currentUser.hobby}} {{currentUser.hobby}}">
+        <input type="text" class="form-control" id="hobby" placeholder="{{currentUser.profile.hobby}} {{currentUser.profile.hobby}}">
       </div>
 
       <div class="custom-control custom-radio col-auto">
