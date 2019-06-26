@@ -13,6 +13,17 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
 		<!-- Provides the IoC container -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -27,6 +38,13 @@
 			<version>5.1.5.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>5.1.5.RELEASE</version>
+		</dependency>
+				
 		<!-- Provides annotations and package scanning -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -61,7 +79,13 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.1.Final</version>
 		</dependency>
-
+		
+	<!-- VALIDATOR -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.16.Final</version>
+		</dependency>
 		<!-- JACKSON for jsons -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -97,16 +121,5 @@
 			<version>1.11.163</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>javax.mail-api</artifactId>
-			<version>1.5.5</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
 	</dependencies>
 </project>
