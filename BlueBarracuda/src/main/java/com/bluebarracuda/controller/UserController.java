@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bluebarracuda.model.User;
+import com.bluebarracuda.repo.UserRepo;
+
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
-@RequestMapping(value="/Project2")
+@RequestMapping(value="/BlueBarracuda")
 public class UserController {
 	
 
@@ -42,5 +45,11 @@ public class UserController {
 	@PostMapping(value="{num}/getUserByUri.app")
 	public @ResponseBody User getUserByUri(@PathVariable("num") int num) {
 		return userRepo.selectById(num);
+	}
+	
+	@GetMapping(value="/test.app")
+	public @ResponseBody String test() {
+		System.out.println("in the test method");
+		return "Success!";
 	}
 }
