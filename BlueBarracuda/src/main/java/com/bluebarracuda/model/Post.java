@@ -1,6 +1,5 @@
 package com.bluebarracuda.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,12 +35,21 @@ public class Post {
 	public Post() {
 	}
 
+	/**
+	 * @param user
+	 * @param postText
+	 * @param likes
+	 * @param dislikes
+	 */
 	public Post(User user, String postText, int likes, int dislikes) {
+		super();
 		this.user = user;
 		this.postText = postText;
 		this.likes = likes;
 		this.dislikes = dislikes;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -75,5 +83,4 @@ public class Post {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
-
 }

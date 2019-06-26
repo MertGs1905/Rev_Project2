@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 
+
 @CrossOrigin(origins="*")
 @Controller
 @RequestMapping(value="/user")
@@ -48,5 +49,4 @@ public class UserController {
 		System.out.println("In Auth, Username input: " + username);
 		return userRepo.selectByUsername(username);
 	}
-	
 }

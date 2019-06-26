@@ -49,6 +49,19 @@ public class Profile {
 		this.hobbies = hobbies;
 		this.imageLink = imageLink;
 	}
+	
+	
+	/**
+	 * @param email
+	 * @param firstName
+	 * @param lastName
+	 */
+	public Profile(String email, String firstName, String lastName) {
+		super();
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public String getEmail() {
 		return email;
