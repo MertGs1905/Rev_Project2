@@ -1,10 +1,12 @@
 package com.bluebarracuda.model;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +33,10 @@ public class Profile {
 
 	@Column(name="image_link")
 	String imageLink;
+	
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 	
 	public Profile(String email, String firstName, String lastName, String occupation, Timestamp birthdate,
 			String hobbies, String imageLink) {
