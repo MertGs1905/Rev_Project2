@@ -14,12 +14,7 @@ import com.bluebarracuda.model.Profile;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 
-<<<<<<< HEAD
 @CrossOrigin(origins = "*")
-=======
-
-@CrossOrigin(origins="*")
->>>>>>> 87248b6c408d89b85a36489b84337a37cdd3724e
 @Controller
 @RequestMapping(value="/user")
 public class UserController {	

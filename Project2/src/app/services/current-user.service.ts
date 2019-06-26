@@ -21,7 +21,8 @@ export class CurrentUserService {
             .set('firstname', firstName)
             .set('lastname', lastName)
             .set('email', email);
-        return this.http.post(`${environment.apiUrl}/user/register`, payload);
+        console.log(payload);
+        return this.http.post(`${environment.apiUrl}/registerUser`, payload);
     }
 
     delete(id) {

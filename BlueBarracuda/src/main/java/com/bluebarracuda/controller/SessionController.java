@@ -45,9 +45,10 @@ public class SessionController {
 		String email = emailParam;
 		
 		Profile profile = new Profile(email, firstname, lastname);
-		
+		System.out.println(profile.toString());
 		User newUser = new User(username, password);
 		newUser.setProfile(profile);
+		System.out.println(newUser.toString());
 		userRepo.insert(newUser);
 	}
 	

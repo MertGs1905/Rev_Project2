@@ -31,6 +31,7 @@ public class UserRepo {
 	}
 	
 	public int insert(User user) {		
+		System.out.println("In user insert");
 		return (int) sesFact.getCurrentSession().save(user);
 	}
 	
