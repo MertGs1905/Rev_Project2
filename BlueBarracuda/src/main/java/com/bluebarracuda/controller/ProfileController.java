@@ -31,17 +31,17 @@ public class ProfileController {
 		
 	}
 	
-	@GetMapping(value="/getAllProfile.app")
+	@GetMapping(value="/getAllProfiles")
 	public @ResponseBody List<Profile> getAllProfile(){
 		return profileRepo.selectAll();
 	}
 	
-	@PostMapping(value="/getProfileById.app")
+	@PostMapping(value="/getProfileById")
 	public @ResponseBody Profile getProfileById(@RequestParam("id")int num){
 		return profileRepo.selectById(num);
 	}
 	
-	@PostMapping(value="{num}/getProfileByUri.app")
+	@PostMapping(value="{num}/getProfileByUri")
 	public @ResponseBody Profile getProfileByUri(@PathVariable("num")int num) {
 		return profileRepo.selectById(num);
 	}
