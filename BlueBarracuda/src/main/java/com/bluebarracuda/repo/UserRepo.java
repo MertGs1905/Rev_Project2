@@ -30,8 +30,8 @@ public class UserRepo {
 		this.sesFact = sesFact;
 	}
 	
-	public void insert(User user) {		
-		sesFact.getCurrentSession().save(user);
+	public int insert(User user) {		
+		return (int) sesFact.getCurrentSession().save(user);
 	}
 	
 	public void update(User user) {
