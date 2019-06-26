@@ -1,15 +1,11 @@
 package com.bluebarracuda.repo;
 
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.bluebarracuda.model.Post;
-
-
 
 @Repository("postRepo")
 @Transactional
@@ -45,12 +41,11 @@ public class PostRepo {
 		sesFact.getCurrentSession().delete(post);
 	}
 	
-	public Post selectByInt(int id) {
-		return sesFact.getCurrentSession().get(Post.class,id);
+	public Post selectById(int postId) {
+		return sesFact.getCurrentSession().get(Post.class,postId);
 	}
 	
-	public List<Post> SelectAll(){
-		System.out.println("Inside selectAll Posts");
+	public List<Post> SelectAll(){		
 		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list(); 
 				
 	}

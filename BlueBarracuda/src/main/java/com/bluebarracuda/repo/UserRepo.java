@@ -1,15 +1,11 @@
 package com.bluebarracuda.repo;
 
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.bluebarracuda.model.User;
-
-
 
 @Repository("userRepo")
 @Transactional
@@ -34,8 +30,7 @@ public class UserRepo {
 		this.sesFact = sesFact;
 	}
 	
-	public void insert(User user) {
-		
+	public void insert(User user) {		
 		sesFact.getCurrentSession().save(user);
 	}
 	
@@ -51,9 +46,17 @@ public class UserRepo {
 		return sesFact.getCurrentSession().get(User.class, id);
 	}
 	
+	public User selectByUsername(String username) {
+		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
+				" User where username='"+username
+				+"'", User.class).list();
+		return users.get(0);
+	}
+	
 	public List<User> selectAll(){
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
+	
 	
 
 }

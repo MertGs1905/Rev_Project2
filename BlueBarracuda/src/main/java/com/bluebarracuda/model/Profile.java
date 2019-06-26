@@ -1,36 +1,55 @@
 package com.bluebarracuda.model;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Profile")
 public class Profile {
-	User user;
+
+	@Column(name="email")
 	private String email;
+
+	@Column(name="first_name")
 	private String firstName;
+
+	@Column(name="last_name")
 	private String lastName;
+
+	@Column(name="occupation")
 	private String occupation;
+
+	@Column(name="birthdate")
 	private Timestamp birthdate;
+
+	@Column(name="hobbies")
 	private String hobbies;
-	byte[] image;
+
+	@Column(name="image_link")
+	String imageLink;
 	
-	public Profile(User user, String email, String firstName, String lastName, String occupation, Timestamp birthdate,
-			String hobbies, byte[] image) {
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+	
+	public Profile(String email, String firstName, String lastName, String occupation, Timestamp birthdate,
+			String hobbies, String imageLink) {
 		super();
-		this.user = user;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.occupation = occupation;
 		this.birthdate = birthdate;
 		this.hobbies = hobbies;
-		this.image = image;
+		this.imageLink = imageLink;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -67,17 +86,17 @@ public class Profile {
 	public void setHobbies(String hobbies) {
 		this.hobbies = hobbies;
 	}
-	public byte[] getImage() {
-		return image;
+	public String getImageLink() {
+		return this.imageLink;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImage(String imageLink) {
+		this.imageLink = imageLink;
 	}
 	@Override
 	public String toString() {
-		return "Profile [user=" + user + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+		return "Profile [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", occupation=" + occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", image="
-				+ Arrays.toString(image) + "]";
+				+ imageLink + "]";
 	}
 	
 	

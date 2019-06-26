@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { IUser } from '../services/User';
 import { isBuffer, isUndefined } from 'util';
-
+/*
 // let users = JSON.parse(localStorage.getItem('users')) || [];
 const users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -91,3 +91,4 @@ export const fakeBackendProvider = {
     useClass: FakeBackendInterceptor,
     multi: true
 };
+*/
