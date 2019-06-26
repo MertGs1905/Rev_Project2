@@ -32,7 +32,7 @@ public class UserController {
 	
 	@GetMapping(value="/getAllUsers")
 	public @ResponseBody List<User> getAllUsers(){
-		System.out.println("In get All user");
+		System.out.println("All user controller");
 		return userRepo.selectAll();
 	}
 	
