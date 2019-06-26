@@ -2,14 +2,6 @@ package com.bluebarracuda.model;
 
 import java.sql.Timestamp;
 
-<<<<<<< HEAD
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
-||||||| merged common ancestors
-=======
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,17 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Profile")
->>>>>>> 7ba77f5f5e73120170cf214f67da431200df8d1d
 public class Profile {
-<<<<<<< HEAD
-	
-	@Column(name="email")
-||||||| merged common ancestors
-	User user;
-=======
 
 	@Column(name="email")
->>>>>>> 7ba77f5f5e73120170cf214f67da431200df8d1d
 	private String email;
 
 	@Column(name="first_name")
@@ -63,8 +47,7 @@ public class Profile {
 		this.occupation = occupation;
 		this.birthdate = birthdate;
 		this.hobbies = hobbies;
-<<<<<<< HEAD
-		this.image = image;
+		this.imageLink = imageLink;
 	}
 	
 	
@@ -78,25 +61,6 @@ public class Profile {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
-	}
-
-
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-||||||| merged common ancestors
-		this.image = image;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-=======
-		this.imageLink = imageLink;
->>>>>>> 7ba77f5f5e73120170cf214f67da431200df8d1d
 	}
 
 	public String getEmail() {

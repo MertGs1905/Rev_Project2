@@ -1,13 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: mgper
 Build-Jdk: 1.8.0_212
-||||||| merged common ancestors
-Built-By: arnol
-Build-Jdk: 1.8.0_211
-=======
-Built-By: tlgra
-Build-Jdk: 1.8.0_201
->>>>>>> 7ba77f5f5e73120170cf214f67da431200df8d1d
 Created-By: Maven Integration for Eclipse
 
