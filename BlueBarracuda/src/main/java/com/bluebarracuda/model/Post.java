@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Post")
 public class Post {
+<<<<<<< HEAD
 	
 	@Id
 	@Column(name="food_id")
@@ -31,6 +32,12 @@ public class Post {
 	}
 	
 	public Post(User user, String post, int likes, int dislikes) {
+=======
+	User user;
+	String post;
+	Ratings rating;
+	public Post(User user, String post, Ratings rating) {
+>>>>>>> 41253aa69d9f70c1e15c3ab46eb7573790bf6ffc
 		super();
 		this.user = user;
 		this.post = post;
@@ -39,8 +46,18 @@ public class Post {
 	}
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "Post [user=" 
 				+ user + ", post=" + post + ", likes=" + likes + ", dislikes " + dislikes +"]";
+=======
+		return "Post [user=" + user + ", post=" + post + ", rating=" + rating + "]";
+	}
+	public User getUser() {
+		return this.user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+>>>>>>> 41253aa69d9f70c1e15c3ab46eb7573790bf6ffc
 	}
 		
 	public String getPost() {
