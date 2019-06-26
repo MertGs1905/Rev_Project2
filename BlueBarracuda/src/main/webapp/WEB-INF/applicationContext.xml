@@ -16,6 +16,10 @@
 	
 	<!-- THIS IS THE ONLY THING WE NEED FOR SPRING MVC SPECIFICALLY -->
 	<mvc:annotation-driven/>
+	<mvc:cors>
+		<mvc:mapping path="/**"
+		allowed-origins="http://localhost:4200" allow-credentials="true" />
+	</mvc:cors>
 
 	<!-- DATASOURCE This bean is a JDBC instance. -->
 	<bean id="dataSource"

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { IUser } from './User';
@@ -14,8 +14,14 @@ export class CurrentUserService {
     getById(id) {
         return this.http.get<IUser>(`${environment.apiUrl}/users/${id}`);
     }
-    register(user) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+    register(username, password, firstName, lastName, email) {
+        const payload = new HttpParams()
+            .set('username', username)
+            .set('password', password)
+            .set('firstname', firstName)
+            .set('lastname', lastName)
+            .set('email', email);
+        return this.http.post(`${environment.apiUrl}/user/register`, payload);
     }
 
     delete(id) {
