@@ -1,6 +1,6 @@
 package com.bluebarracuda.controller;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 @Controller
 //@RequestMapping(value="/Project2/email")
 public class EmailController {
-	
-		private MailService mailServ;
+		
 		private MailService mail;
 	
 	public EmailController() {
@@ -31,7 +30,7 @@ public class EmailController {
 	
 	
 	@RequestMapping(value = "/resetPassword.app", method = RequestMethod.POST)
-	public @ResponseBody void doRestPwd(HttpServletRequest request) throws JsonProcessingException {
+	public @ResponseBody void doRestPwd() throws JsonProcessingException {
 	
 			System.out.println("in the resetmapper");
 			
