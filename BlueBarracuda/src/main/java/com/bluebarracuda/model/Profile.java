@@ -4,7 +4,8 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 
 public class Profile {
-	User user;
+	
+	private User user;
 	private String email;
 	private String firstName;
 	private String lastName;

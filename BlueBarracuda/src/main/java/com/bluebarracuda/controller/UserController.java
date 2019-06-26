@@ -46,15 +46,4 @@ public class UserController {
 	public @ResponseBody User getUserByUri(@PathVariable("num") int num) {
 		return userRepo.selectById(num);
 	}
-<<<<<<< HEAD
-	
-	@GetMapping(value="/test.app")
-	public @ResponseBody String test() {
-		System.out.println("in the test method");
-		return "Success!";
-	}
-||||||| merged common ancestors
-=======
-	
->>>>>>> b1877fcd3ed9868f99b87ecf972f74d9f53f4920
 }
