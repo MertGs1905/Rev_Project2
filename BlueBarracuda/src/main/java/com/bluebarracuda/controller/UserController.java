@@ -42,7 +42,7 @@ public class UserController {
 	
 	@PostMapping(value="/getUserByUsername")
 	public @ResponseBody User getUserByUsername(@RequestParam("username") String username) {
-		return userRepo.selectUserByUsername(username;)
+		return userRepo.selectByUsername(username);
 	}
 	
 	
