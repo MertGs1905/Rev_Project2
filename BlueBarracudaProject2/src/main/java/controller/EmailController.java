@@ -22,8 +22,8 @@ public class EmailController {
 		
 	}
 	
-	@PostMapping(value="/sendEmail.app")
-	public @ResponseBody void sendEmail(@RequestParam("email") String email)throws JsonProcessingException{
+	@RequestMapping(value = "/resetPassword.app", method = RequestMethod.POST)
+	public @ResponseBody OpResult doRestPwd(HttpServletRequest request) throws JsonProcessingException {
 	
 			System.out.println("in the resetmapper");
 			
