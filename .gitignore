@@ -1,3 +1,6 @@
 node_modules
 /Servers
+/Servers2
+/BlueBarracuda/target/*
+/BlueBarracuda/Servers
 /.metadata/
