@@ -3,16 +3,37 @@ package com.bluebarracuda.model;
 import java.sql.Timestamp;
 import java.util.Arrays;
 
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 public class Profile {
 	
-	private User user;
+	@Column(name="email")
 	private String email;
+
+	@Column(name="first_name")
 	private String firstName;
+
+	@Column(name="last_name")
 	private String lastName;
+
+	@Column(name="occupation")
 	private String occupation;
+
+	@Column(name="birthdate")
 	private Timestamp birthdate;
+
+	@Column(name="hobbies")
 	private String hobbies;
-	byte[] image;
+
+	@Column(name="image_link")
+	String imageLink;
+	
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 	
 	public Profile(User user, String email, String firstName, String lastName, String occupation, Timestamp birthdate,
 			String hobbies, byte[] image) {
@@ -26,6 +47,21 @@ public class Profile {
 		this.hobbies = hobbies;
 		this.image = image;
 	}
+	
+	
+	/**
+	 * @param email
+	 * @param firstName
+	 * @param lastName
+	 */
+	public Profile(String email, String firstName, String lastName) {
+		super();
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+
 	public User getUser() {
 		return user;
 	}
