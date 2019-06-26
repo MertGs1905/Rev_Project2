@@ -57,7 +57,7 @@ public class UserController {
 		userRepo.update(user);
 	}
 	
-	@postMapping(value="/removeUser.app")
+	@PostMapping(value="/removeUser.app")
 	public @ResponseBody void removeUser(User user) {
 		userRepo.delete(user);
 	}

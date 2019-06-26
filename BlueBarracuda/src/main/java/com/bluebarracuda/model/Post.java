@@ -2,10 +2,10 @@ package com.bluebarracuda.model;
 
 
 public class Post {
-	String user;
+	User user;
 	String post;
 	Ratings rating;
-	public Post(String user, String post, Ratings rating) {
+	public Post(User user, String post, Ratings rating) {
 		super();
 		this.user = user;
 		this.post = post;
@@ -16,7 +16,7 @@ public class Post {
 		return "Post [user=" + user + ", post=" + post + ", rating=" + rating + "]";
 	}
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 	public void setUser(User user) {
 		this.user = user;

@@ -11,8 +11,7 @@ import javax.persistence.Table;
 @Table(name="User")
 public class User {
 	
-	//String Fname;
-	//String Lname;
+
 	@Id
 	@Column(name="user_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
