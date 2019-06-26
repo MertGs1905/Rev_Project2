@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bluebarracuda.model.Rating;
 import com.bluebarracuda.repo.RatingRepo;
 
-
-
-
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 @RequestMapping(value="/rating")
