@@ -26,12 +26,12 @@ public class UserRepo {
 
 	@Autowired
 	public UserRepo(SessionFactory sesFact) {
-		super();
 		this.sesFact = sesFact;
 	}
 	
-	public void insert(User user) {		
-		sesFact.getCurrentSession().save(user);
+	public int insert(User user) {		
+		System.out.println("In user insert");
+		return (int) sesFact.getCurrentSession().save(user);
 	}
 	
 	public void update(User user) {
@@ -54,6 +54,7 @@ public class UserRepo {
 	}
 	
 	public List<User> selectAll(){
+		System.out.println();
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	

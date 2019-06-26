@@ -72,7 +72,11 @@ export class RegisterComponent implements OnInit {
         console.log(this.regUser);
 
         this.loading = true;
-        this.userService.register(this.regUser)
+        this.userService.register(  this.regUser.username,
+                                    this.regUser.password,
+                                    this.regUser.profile.firstName,
+                                    this.regUser.profile.lastName,
+                                    this.regUser.profile.userEmail)
             .pipe(first())
             .subscribe(
                 data => {
