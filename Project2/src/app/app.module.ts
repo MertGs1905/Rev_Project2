@@ -18,7 +18,7 @@ import { UsercardComponent } from './usercard/usercard.component';
 
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
-import { fakeBackendProvider } from './_helpers';
+// import { fakeBackendProvider } from './_helpers';
 import { AuthGuard } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -55,14 +55,14 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       { path: 'login', component: LoginComponent },
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
       { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
-      { path: 'feed', component: PostFeedComponent }
+      { path: 'feed', component: PostFeedComponent, canActivate: [AuthGuard] }
 
     ])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    CurrentUserService, PostService, fakeBackendProvider],
+  CurrentUserService, PostService, /*fakeBackendProvider*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

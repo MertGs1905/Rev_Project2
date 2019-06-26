@@ -1,16 +1,35 @@
 package com.bluebarracuda.model;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+||||||| merged common ancestors
+=======
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Profile")
+>>>>>>> 7ba77f5f5e73120170cf214f67da431200df8d1d
 public class Profile {
+<<<<<<< HEAD
 	
 	@Column(name="email")
+||||||| merged common ancestors
+	User user;
+=======
+
+	@Column(name="email")
+>>>>>>> 7ba77f5f5e73120170cf214f67da431200df8d1d
 	private String email;
 
 	@Column(name="first_name")
@@ -35,16 +54,16 @@ public class Profile {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 	
-	public Profile(User user, String email, String firstName, String lastName, String occupation, Timestamp birthdate,
-			String hobbies, byte[] image) {
+	public Profile(String email, String firstName, String lastName, String occupation, Timestamp birthdate,
+			String hobbies, String imageLink) {
 		super();
-		this.user = user;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.occupation = occupation;
 		this.birthdate = birthdate;
 		this.hobbies = hobbies;
+<<<<<<< HEAD
 		this.image = image;
 	}
 	
@@ -67,7 +86,19 @@ public class Profile {
 	}
 	public void setUser(User user) {
 		this.user = user;
+||||||| merged common ancestors
+		this.image = image;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+=======
+		this.imageLink = imageLink;
+>>>>>>> 7ba77f5f5e73120170cf214f67da431200df8d1d
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -104,17 +135,17 @@ public class Profile {
 	public void setHobbies(String hobbies) {
 		this.hobbies = hobbies;
 	}
-	public byte[] getImage() {
-		return image;
+	public String getImageLink() {
+		return this.imageLink;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImage(String imageLink) {
+		this.imageLink = imageLink;
 	}
 	@Override
 	public String toString() {
-		return "Profile [user=" + user + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+		return "Profile [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", occupation=" + occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", image="
-				+ Arrays.toString(image) + "]";
+				+ imageLink + "]";
 	}
 	
 	
