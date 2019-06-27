@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpParams, HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { AuthenticationService } from '.';
 import * as AWS from 'aws-sdk';
 import * as S3 from 'aws-sdk/clients/s3';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { AuthenticationService } from '.';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'

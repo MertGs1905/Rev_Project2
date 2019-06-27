@@ -1,11 +1,11 @@
 package com.bluebarracuda.model;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,49 +17,52 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Users")
-public class User {	
+@Table(name = "Users")
+public class User {
 
 	@Id
-	@Column(name="user_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
-	
-	@Column(name="user_name", unique=true, nullable=false)
+
+	@Column(name = "user_name", unique = true, nullable = false)
 	private String username;
-	
-	@Column(name="password", unique=true, nullable=false)
+
+	@Column(name = "password", nullable = false)
 	private String password;
 
-	@OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="user_id")
-	private Profile profile;
-	
-	 @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-	 @JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Post> posts;
 
-	public User() {	
-		
-	}	
+	@Column(name = "email")
+	private String email;
 
-	/**
-	 * @param username
-	 * @param password
-	 * @param profile
-	 */
-	public User(String username, String password, Profile profile) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.profile = profile;
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "occupation")
+	private String occupation;
+
+	@Column(name = "birthdate")
+	private Timestamp birthdate;
+
+	@Column(name = "hobbies")
+	private String hobbies;
+
+	@Column(name = "image_link")
+	String imageLink;
+
+	public User() {
+
 	}
 
-
-
 	public User(String username, String password) {
-		this.username = username;
+		super();
 		this.password = password;
+		this.username = username;
 	}
 
 	public int getUserId() {
@@ -86,21 +89,70 @@ public class User {
 		this.password = password;
 	}
 
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
-
 	public List<Post> getPosts() {
 		return posts;
 	}
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
-	}	
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+	public Timestamp getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Timestamp birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	public String getHobbies() {
+		return hobbies;
+	}
+
+	public void setHobbies(String hobbies) {
+		this.hobbies = hobbies;
+	}
+
+	public String getImageLink() {
+		return imageLink;
+	}
+
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
+	}
+
 	
-	
+
 }
