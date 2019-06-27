@@ -40,6 +40,22 @@ public class User {
 	public User() {		
 		
 	}
+	
+	
+
+	/**
+	 * @param username
+	 * @param password
+	 * @param profile
+	 */
+	public User(String username, String password, Profile profile) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.profile = profile;
+	}
+
+
 
 	public User(String username, String password) {
 		this.username = username;
