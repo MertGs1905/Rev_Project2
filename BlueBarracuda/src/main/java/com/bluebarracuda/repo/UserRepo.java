@@ -29,9 +29,9 @@ public class UserRepo {
 		this.sesFact = sesFact;
 	}
 	
-	public int insert(User user) {		
+	public void insert(User user) {		
 		System.out.println("In user insert");
-		return (int) sesFact.getCurrentSession().save(user);
+		sesFact.getCurrentSession().save(user);
 	}
 	
 	public void update(User user) {

@@ -16,8 +16,7 @@ import com.bluebarracuda.model.User;
 
 @Entity()
 @Table(name="Rating")
-public class Rating {
-	
+public class Rating {	
 	@Id
 	@Column(name="rating_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
