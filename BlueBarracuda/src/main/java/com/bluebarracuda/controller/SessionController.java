@@ -20,6 +20,10 @@ import com.bluebarracuda.repo.UserRepo;
 public class SessionController {
 	
 	private UserRepo userRepo;
+	
+	public SessionController(UserRepo userRepo) {
+		this.userRepo = userRepo;
+	}
 
 	@GetMapping(value="")
 	public @ResponseBody void createSession(HttpSession session) {
