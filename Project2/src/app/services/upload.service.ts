@@ -1,14 +1,6 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-// // import * as AWS from 'aws-sdk/global';
-// import * as S3 from 'aws-sdk/clients/s3';
-||||||| merged common ancestors
-import * as AWS from 'aws-sdk/global';
-import * as S3 from 'aws-sdk/clients/s3';
-=======
 import * as AWS from 'aws-sdk';
 import * as S3 from 'aws-sdk/clients/s3';
->>>>>>> c7a37ff1c5f8be84fdf1c5b78cc5fc1be098c083
 
 @Injectable({
   providedIn: 'root'
