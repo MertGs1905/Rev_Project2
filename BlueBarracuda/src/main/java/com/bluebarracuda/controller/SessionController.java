@@ -66,10 +66,8 @@ public class SessionController {
 		User user = userRepo.getHash(username, password);
 		if (user == null) {
 			return  new ResponseEntity<User>(new User(), HttpStatus.NOT_FOUND);
-		}
-		
-		return new ResponseEntity<User>(user, HttpStatus.OK);	
-
+		}		
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
 
