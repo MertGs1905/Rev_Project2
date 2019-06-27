@@ -1,5 +1,6 @@
 package com.bluebarracuda.controller;
 
+import javax.servlet.http.HttpSession;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.bluebarracuda.model.Profile;
 import com.bluebarracuda.model.Users;
 import com.bluebarracuda.repo.UserRepo;
@@ -45,31 +47,38 @@ public class SessionController {
 		
 		Profile profile = new Profile(email, firstname, lastname);
 		System.out.println(profile.toString());
+<<<<<<< HEAD
 		Users newUser = new Users(username, password);
 		newUser.setProfile(profile);
+=======
+		User newUser = new User(username, password, profile);
+		//newUser.setProfile(profile);
+>>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
 		System.out.println(newUser.toString());
 		userRepo.insert(newUser);
 	}
 	
 	
 	
-	@GetMapping(value="/login")
-	public String login(HttpSession session) {
-		System.out.println("in the login method");
+	@PostMapping(value="/authenticate")
+	public @ResponseBody User login(
+			@RequestParam("username") String username,
+			@RequestParam("password") String password) {
 		
-		session.setAttribute("loggedName", "MyNameIsPeachesAndImTheBest");
-		session.setAttribute("loggedPass", "soulglow");
-		
-		System.out.println("\n\n\n");
-		return "extpa";
+		System.out.println("In Auth, Username input: " + username);
+		User tmp = userRepo.selectByUsername(username);
+		if(tmp.getPassword() == password)
+			return userRepo.selectByUsername(username);
+		else return null;
 	}
 	
-	@GetMapping(value="/logout")
-	public String logout(HttpSession session) {
-		System.out.println("in the logout method");
-		session.invalidate();
-		
-		System.out.println("\n\n\n");
-		return "extpa";
-	}
+	
+//	@GetMapping(value="/logout")
+//	public String logout(HttpSession session) {
+//		System.out.println("in the logout method");
+//		session.invalidate();
+//		
+//		System.out.println("\n\n\n");
+//		return "extpa";
+//	}
 }
