@@ -12,7 +12,7 @@ export class PostService {
   private postSub = new BehaviorSubject([]);
   private baseUrl: string;
   private dataStore: {
-    posts: {postId: 5, userId: 1, postText: '', rating: {1, 2}}
+    posts: IPost[]
   };
 
   constructor(private http: HttpClient) {

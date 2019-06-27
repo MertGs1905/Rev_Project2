@@ -2,10 +2,7 @@ package com.bluebarracuda.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -65,11 +62,9 @@ public class SessionController {
 		System.out.println("In Auth, Username input: " + username);	
 		User user = userRepo.getHash(username, password);
 		if (user == null) {
-			return  new ResponseEntity<User>(new User(), HttpStatus.NOT_FOUND);
-		}
-		
-		return new ResponseEntity<User>(user, HttpStatus.OK);	
-
+			return  new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
+		}		
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
 

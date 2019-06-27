@@ -29,7 +29,7 @@ public class Post {
 	@Column(name="post_text", nullable=false)	
 	private String postText;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="post_id")
 	private List<Rating> ratings;
 

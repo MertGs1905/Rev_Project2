@@ -37,7 +37,12 @@ public class PostController {
 	@GetMapping(value = "/getAllPosts")
 	public @ResponseBody List<Post> getAllPosts() {
 		System.out.println("Inside Get all posts");
-		return postRepo.SelectAll();
+		List<Post> posts = postRepo.SelectAll();
+		if(posts.isEmpty()) {
+			posts.add(new Post());
+			
+		}
+		return posts;
 
 	}
 
