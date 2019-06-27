@@ -16,10 +16,6 @@ import com.bluebarracuda.repo.UserRepo;
 public class SessionController {
 
 	private UserRepo userRepo;
-	
-	public SessionController(UserRepo userRepo) {
-		this.userRepo = userRepo;
-	}
 
 	public SessionController(UserRepo userRepo) {
 		this.userRepo = userRepo;
@@ -60,7 +56,7 @@ public class SessionController {
 		System.out.println("In Auth, Username input: " + username);
 		User tmp = userRepo.selectByUsername(username);
 		if (tmp.getPassword() == password)
-			return userRepo.selectByUsername(username);
+			return tmp;
 		else
 			return null;
 	}
