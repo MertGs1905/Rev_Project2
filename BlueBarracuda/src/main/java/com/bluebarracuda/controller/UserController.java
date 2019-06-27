@@ -45,6 +45,7 @@ public class UserController {
 	public @ResponseBody User getUserByUsername(@RequestParam("username") String username) {
 		return userRepo.selectByUsername(username);
 	}
+<<<<<<< HEAD
 
 //	@PostMapping(value="/authenticate")
 //	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
@@ -55,5 +56,18 @@ public class UserController {
 //		else return null;
 //	}
 	
+=======
+/*
+	@PostMapping(value="/authenticate")
+	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
+		System.out.println("In Auth, Username input: " + username);
+		User tmp = userRepo.selectByUsername(username);
+		String tmpPwd = userRepo.getHash(username, password);
+		if(tmp.getPassword() == tmpPwd)
+			return tmp;
+		else return null;
+	}
+*/	
+>>>>>>> 2844c4fa9291999816a55ab5db4316e9bbc7b86d
 
 }
