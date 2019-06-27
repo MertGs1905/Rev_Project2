@@ -68,7 +68,7 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
-<<<<<<< HEAD
+
 	public User getHash(String username, String password) {			
 		List<User> user = sesFact.getCurrentSession().createQuery("FROM User" 
 				+ " WHERE username= '" + username
@@ -79,21 +79,7 @@ public class UserRepo {
             return null;
         }  
         return user.get(0);
-=======
-	public String getHash(String username, String password) {			
-	      StoredProcedureQuery procedureQuery = sesFact.getCurrentSession()
-	              .createStoredProcedureQuery("GET_USER_HASH");
-	      procedureQuery.registerStoredProcedureParameter("username", String.class, ParameterMode.IN);
-	      procedureQuery.registerStoredProcedureParameter("password", String.class, ParameterMode.IN);
-	      procedureQuery.registerStoredProcedureParameter("hash", String.class, ParameterMode.OUT);
-	      procedureQuery.setParameter("username", username);
-	      procedureQuery.setParameter("password", password);
-	      procedureQuery.execute();
-	      String singleResult = (String) procedureQuery.getOutputParameterValue("hash");
-	      System.out.println("sum: " + singleResult);
-	      return singleResult;
->>>>>>> 2844c4fa9291999816a55ab5db4316e9bbc7b86d
-	}	
-	
+	}
+
 
 }
