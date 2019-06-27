@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Post> posts;
 
 	@Column(name = "email")
@@ -147,6 +148,13 @@ public class User {
 
 	public void setImageLink(String imageLink) {
 		this.imageLink = imageLink;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", posts=" + posts
+				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", occupation="
+				+ occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", imageLink=" + imageLink + "]";
 	}
 
 	
