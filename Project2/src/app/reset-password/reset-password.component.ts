@@ -34,7 +34,12 @@ export class ResetPasswordComponent implements OnInit {
       password: this.password,
       username: this.username,
       user_id: this.userId,
-      profile: this.userProfile
+      email: this.email,
+      firstName: '',
+      lastName: '',
+      occupation: '',
+      birthdate: '',
+      hobbies: ''
     };
 
 

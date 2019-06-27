@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { AuthenticationService } from '../services';
-
+/*
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     constructor(private authenticationService: AuthenticationService) {}
@@ -22,3 +22,4 @@ export class ErrorInterceptor implements HttpInterceptor {
         }));
     }
 }
+*/

@@ -2,7 +2,10 @@ package com.bluebarracuda.repo;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
+import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureQuery;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -70,9 +73,10 @@ public class UserRepo {
 	}
 	
 	public User selectByUsername(String username) {
+		System.out.println(username +" in selectByUsername");
 		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
-				" Users where username='"+username
-				+"'", User.class).list();
+				" Users where user_name='"+username+"'", User.class).list();
+		System.out.println(users.toString());
 		return users.get(0);
 	}
 	
@@ -81,13 +85,18 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
-	public String getHash(String username, String password) {
-		return (String) sesFact.getCurrentSession().createNativeQuery("SELECT GET_USER_HASH(:username, :password) FROM DUAL")
-		.setParameter("username", username)
-		.setParameter("password", password)
-		.getSingleResult();		
-	}
-	
+	public String getHash(String username, String password) {			
+	      StoredProcedureQuery procedureQuery = sesFact.getCurrentSession()
+	              .createStoredProcedureQuery("GET_USER_HASH");
+	      procedureQuery.registerStoredProcedureParameter("username", String.class, ParameterMode.IN);
+	      procedureQuery.registerStoredProcedureParameter("password", String.class, ParameterMode.IN);
+	      procedureQuery.setParameter("username", username);
+	      procedureQuery.setParameter("password", password);
+	      procedureQuery.execute();
+	      Object singleResult = procedureQuery.getSingleResult();
+	      System.out.println("sum: " + singleResult);
+	      return (String) singleResult;
+	}	
 	
 
 }

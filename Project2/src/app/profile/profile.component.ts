@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   subscription: Subscription;
+  logUser: IUser;
   currentUser: IUser;
   userProfile: UserProfile;
   bannerImage = 'assets/Cool-Cat-Cropped.jpg';
@@ -22,14 +23,22 @@ export class ProfileComponent implements OnInit {
         user_id: 0,
         username: '',
         password: '',
-        profile: {user_id: 0, userEmail: '', firstName: '', lastName: '', hobby: '', occupation: '', birthday: '' }
+        email: '',
+        firstName: '',
+        lastName: '',
+        birthdate: '',
+        occupation: '',
+        hobbies: ''
     };
   }
 
   ngOnInit() {
-    this.userId = +this.route.snapshot.paramMap.get('id');
-    console.log(this.userId);
-    this.getUser();
+      this.userService.currentUser.subscribe(
+        cUser => this.logUser = cUser
+      );
+      this.userId = +this.route.snapshot.paramMap.get('id');
+      console.log(this.userId);
+      this.getUser();
   }
 
   getUser(): void {
