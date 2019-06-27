@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
+import { HttpParams, HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { AuthenticationService } from '.';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
+  currentUser: any;
 
-  constructor() { }
+  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
+
+  }
 
   uploadFile(file) {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         const contentType = file.type;
         const bucket = new S3(
           {
@@ -31,6 +38,8 @@ export class UploadService {
               return false;
           }
           console.log('Successfully uploaded file.', data);
+          const payload = new HttpParams().set('imageLink', data).set('username', this.currentUser.username);
+          this.http.post<any>(`${environment.apiUrl}/user/addImage`, payload);
           return true;
       });
 
