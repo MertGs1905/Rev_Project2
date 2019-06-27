@@ -3,6 +3,8 @@ package com.bluebarracuda.model;
 
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,14 +25,14 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int postId;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "User_FK")
+	@ManyToOne(fetch = FetchType.EAGER)	
 	private User user;
 	
 	@Column(name="post_text", nullable=false)	
 	private String postText;
 	
-	@OneToMany(mappedBy="Post")
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="post_id")
 	private List<Rating> ratings;
 
 	public Post() {
