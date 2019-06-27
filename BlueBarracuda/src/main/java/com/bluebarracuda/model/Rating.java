@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import com.bluebarracuda.model.User;
+import com.bluebarracuda.model.Users;
 
 @Entity()
 @Table(name="Rating")
@@ -25,7 +25,7 @@ public class Rating {
 	
 	@OneToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private Users user;
 	
 	@Column(name="isLiked")
 	private boolean isLiked;
@@ -46,11 +46,11 @@ public class Rating {
 		this.ratingId = ratingId;
 	}
 
-	public User getUser() {
+	public Users getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Users user) {
 		this.user = user;
 	}
 

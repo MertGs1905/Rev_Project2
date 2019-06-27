@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.bluebarracuda.model.Profile;
-import com.bluebarracuda.model.User;
+import com.bluebarracuda.model.Users;
 import com.bluebarracuda.repo.UserRepo;
 
 
@@ -45,7 +45,7 @@ public class SessionController {
 		
 		Profile profile = new Profile(email, firstname, lastname);
 		System.out.println(profile.toString());
-		User newUser = new User(username, password);
+		Users newUser = new Users(username, password);
 		newUser.setProfile(profile);
 		System.out.println(newUser.toString());
 		userRepo.insert(newUser);

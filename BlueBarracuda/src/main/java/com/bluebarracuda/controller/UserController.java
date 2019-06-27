@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluebarracuda.model.Profile;
-import com.bluebarracuda.model.User;
+import com.bluebarracuda.model.Users;
 import com.bluebarracuda.repo.UserRepo;
 
 @CrossOrigin(origins = "*")
@@ -31,24 +31,24 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/getAllUsers")
-	public @ResponseBody List<User> getAllUsers(){
+	public @ResponseBody List<Users> getAllUsers(){
 		System.out.println("All user controller");
 		return userRepo.selectAll();
 	}
 	
 	@PostMapping(value="/getUserById")
-	public @ResponseBody User getUserById(@RequestParam("userId") int userId) {
+	public @ResponseBody Users getUserById(@RequestParam("userId") int userId) {
 		return userRepo.selectById(userId);
 	}
 	
 	@PostMapping(value="/getUserByUsername")
-	public @ResponseBody User getUserByUsername(@RequestParam("username") String username) {
+	public @ResponseBody Users getUserByUsername(@RequestParam("username") String username) {
 		return userRepo.selectByUsername(username);
 	}
 	@PostMapping(value="/authenticate")
-	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
+	public @ResponseBody Users login(@RequestParam("username") String username, @RequestParam("password") String password) {
 		System.out.println("In Auth, Username input: " + username);
-		User tmp = userRepo.selectByUsername(username);
+		Users tmp = userRepo.selectByUsername(username);
 		if(tmp.getPassword() == password)
 			return userRepo.selectByUsername(username);
 		else return null;

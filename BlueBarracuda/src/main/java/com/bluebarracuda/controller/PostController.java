@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluebarracuda.model.Post;
-import com.bluebarracuda.model.User;
+import com.bluebarracuda.model.Users;
 import com.bluebarracuda.repo.PostRepo;
 import com.bluebarracuda.repo.UserRepo;
 
@@ -50,7 +50,7 @@ public class PostController {
 	public void addPost(@RequestParam("postText") String postText,
 			@RequestParam("userId") int userId) {
 
-		User user = userRepo.selectById(userId);
+		Users user = userRepo.selectById(userId);
 		if (user != null) {
 			Post post = new Post();
 			post.setPostText(postText);
