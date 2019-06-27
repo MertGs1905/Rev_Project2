@@ -55,6 +55,7 @@ public class SessionController {
 			@RequestParam("password") String password) {
 		System.out.println("In Auth, Username input: " + username);
 		User tmp = userRepo.selectByUsername(username);
+
 		String hash = userRepo.getHash(username, password);
 		if(hash != null) {
 			System.out.println("hash: " + hash + " pw: " + tmp.getPassword());
@@ -65,6 +66,7 @@ public class SessionController {
 		}
 		return tmp;
 		
+
 	}
 
 
