@@ -149,6 +149,13 @@ public class User {
 		this.imageLink = imageLink;
 	}
 
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", posts=" + posts
+				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", occupation="
+				+ occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", imageLink=" + imageLink + "]";
+	}
+
 	
 
 }
