@@ -20,7 +20,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 
 // import { fakeBackendProvider } from './_helpers';
 import { AuthGuard } from './_helpers';
-import { JwtInterceptor, /*ErrorInterceptor*/ } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostFeedComponent } from './post-feed/post-feed.component';
@@ -62,7 +62,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-   /* { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },*/
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   CurrentUserService, PostService, /*fakeBackendProvider*/],
   bootstrap: [AppComponent]
 })

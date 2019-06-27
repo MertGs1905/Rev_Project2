@@ -28,4 +28,9 @@ export class CurrentUserService {
     delete(id) {
         return this.http.delete(`${environment.apiUrl}/users/${id}`);
     }
+    resetPw(email) {
+        const payload = new HttpParams()
+            .set('email', email);
+        return this.http.post(`${environment.apiUrl}/resetPassword`, payload);
+    }
 }
