@@ -1,7 +1,10 @@
 package com.bluebarracuda.repo;
 
 import java.util.List;
+
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,6 +59,13 @@ public class UserRepo {
 	public List<User> selectAll(){
 		System.out.println();
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
+	}
+	
+	public String getHash(String username, String password) {
+		return (String) sesFact.getCurrentSession().createNativeQuery("SELECT GET_USER_HASH(:username, :password) FROM DUAL")
+		.setParameter("username", username)
+		.setParameter("password", password)
+		.getSingleResult();		
 	}
 	
 	
