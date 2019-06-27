@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 
@@ -45,18 +46,14 @@ public class UserController {
 		return userRepo.selectByUsername(username);
 	}
 
-//	@PostMapping(value="/authenticate")
-//	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
-//		System.out.println("In Auth, Username input: " + username);
-//		User tmp = userRepo.selectByUsername(username);
-//		if(tmp.getPassword() == password)
-//			return userRepo.selectByUsername(username);
-//		else return null;
-//	}
-//	@PostMapping(value="/register")
-//	public @ResponseBody void register(@RequestParam("username") String user) {
-//		System.out.println("In Auth, Username input: " + user);
-//		// userRepo.insert(user);
-//		System.out.println("User Inserted");
-//	}
+	@PostMapping(value="/authenticate")
+	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
+		System.out.println("In Auth, Username input: " + username);
+		User tmp = userRepo.selectByUsername(username);
+		if(tmp.getPassword() == password)
+			return userRepo.selectByUsername(username);
+		else return null;
+	}
+	
+
 }

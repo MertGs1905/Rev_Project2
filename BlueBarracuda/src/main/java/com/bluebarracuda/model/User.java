@@ -14,8 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="User")
+@Table(name="Users")
 public class User {	
 
 	@Id
@@ -33,15 +35,13 @@ public class User {
     @JoinColumn(name="user_id")
 	private Profile profile;
 	
-	 @OneToMany(cascade=CascadeType.ALL)
-	    @JoinColumn(name="user_id")
+	 @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	 @JsonIgnore
 	private List<Post> posts;
 
-	public User() {		
+	public User() {	
 		
-	}
-	
-	
+	}	
 
 	/**
 	 * @param username

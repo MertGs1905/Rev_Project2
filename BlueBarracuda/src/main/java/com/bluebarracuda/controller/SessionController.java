@@ -2,7 +2,7 @@ package com.bluebarracuda.controller;
 
 import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,8 +47,10 @@ public class SessionController {
 		
 		Profile profile = new Profile(email, firstname, lastname);
 		System.out.println(profile.toString());
+
 		User newUser = new User(username, password, profile);
 		//newUser.setProfile(profile);
+
 		System.out.println(newUser.toString());
 		userRepo.insert(newUser);
 	}
