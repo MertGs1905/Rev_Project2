@@ -22,7 +22,12 @@ export class ProfileComponent implements OnInit {
         user_id: 0,
         username: '',
         password: '',
-        profile: {user_id: 0, userEmail: '', firstName: '', lastName: '', hobby: '', occupation: '', birthday: '' }
+        email: '',
+        firstName: '',
+        lastName: '',
+        birthdate: '',
+        occupation: '',
+        hobbies: ''
     };
   }
 

@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate([this.returnUrl]);
             },
             error => {
-                this.error = error;
+                // this.error = error;
                 this.loading = false;
             }
         );
@@ -80,7 +80,12 @@ export class LoginComponent implements OnInit {
       password: this.password,
       username: this.username,
       user_id: this.userId,
-      profile: this.userProfile
+      email: '',
+      firstName: '',
+      lastName: '',
+      occupation: '',
+      birthdate: '',
+      hobbies: ''
     };
 
   }
