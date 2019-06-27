@@ -57,8 +57,10 @@ public class UserRepo {
 		System.out.println(username +" in selectByUsername");
 		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
 				" Users where user_name='"+username+"'", User.class).list();
-		System.out.println(users.toString());
-		return users.get(0);
+		
+		System.out.println("users.get() returns a: " + users.get(0));
+		User user = users.get(0);
+		return user;
 	}
 	
 	public List<User> selectAll(){
@@ -66,17 +68,16 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
-	public String getHash(String username, String password) {			
-	      StoredProcedureQuery procedureQuery = sesFact.getCurrentSession()
-	              .createStoredProcedureQuery("GET_USER_HASH");
-	      procedureQuery.registerStoredProcedureParameter("username", String.class, ParameterMode.IN);
-	      procedureQuery.registerStoredProcedureParameter("password", String.class, ParameterMode.IN);
-	      procedureQuery.setParameter("username", username);
-	      procedureQuery.setParameter("password", password);
-	      procedureQuery.execute();
-	      Object singleResult = procedureQuery.getSingleResult();
-	      System.out.println("sum: " + singleResult);
-	      return (String) singleResult;
+	public User getHash(String username, String password) {			
+		List<User> user = sesFact.getCurrentSession().createQuery("FROM User" 
+				+ " WHERE username= '" + username
+                + "' AND password = GET_USER_HASH('" 
+				+ username + "', '" + password + "')", User.class).list();
+
+        if (user.size() == 0) {
+            return null;
+        }  
+        return user.get(0);
 	}	
 	
 
