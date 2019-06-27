@@ -29,7 +29,7 @@ public class Rating {
 	@Column(name="isLiked")
 	private boolean isLiked;
 	
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="post_id", nullable=false)
 	private Post post;
 	
