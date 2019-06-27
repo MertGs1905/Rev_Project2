@@ -22,14 +22,18 @@ public class Rating {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int ratingId;
 	
-	@OneToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
+	@OneToOne(cascade=CascadeType.PERSIST, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 	
 	@Column(name="isLiked")
 	private boolean isLiked;
 	
+<<<<<<< HEAD
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+=======
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+>>>>>>> 85a42ad50c5ce343eefe1fa196acc51091042788
     @JoinColumn(name="post_id", nullable=false)
 	private Post post;
 	
