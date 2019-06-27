@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluebarracuda.email.MailService;
@@ -33,8 +34,7 @@ public class EmailController {
 	
 
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-
-	public @ResponseBody void doRestPwd() throws JsonProcessingException {
+	public @ResponseBody void doRestPwd(@RequestParam("email") String email) throws JsonProcessingException {
 	
 			System.out.println("in the resetmapper");
 			
@@ -43,10 +43,10 @@ public class EmailController {
 			
 			// Creating message 
 			String senderEmailId = "greenmonkeys83@gmail.com";
-			String receiverEmailId = "tlgraham2017@gmail.com";
+			String receiverEmailId = email;
 			System.out.println(receiverEmailId);
 			String subject = "Your Password Has Been Successfully Reset";
-			String message = "Your account is at serious thread. On our end it looks like "
+			String message = "It looks like "
 					+ "you have forgotten your password. If that is not the case, please "
 					+ "consider that someone decided to prank you a little bit. In any case, "
 					+ "we suggest to change your password once you firstly log in."
@@ -55,8 +55,10 @@ public class EmailController {
 			//sending email 
 			mail.sendEmail(senderEmailId, receiverEmailId, subject, message);
 			
+			
+			user = userRepo.selectByEmail(receiverEmailId);
+			
 			//Updating password in database
-		
 			userRepo.updatePass(user, randString);
 			
 		}

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureQuery;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,19 +50,12 @@ public class UserRepo {
 	
 	public  void updatePass(User user, String randString) {
 		
-		Session session = sesFact.openSession();
-	      Transaction tx = null;
+		
 	    String  newPass = getHash(user.getUsername(), randString);
-	      try{
-	         tx = session.beginTransaction();
-	         user = session.get(User.class, user.getPassword()); 
+	  
 	         user.setPassword( newPass );
-	         session.update(user); 
-	         tx.commit();
-	      }catch(HibernateException e) {
-	          if (tx!=null) tx.rollback();
-	          e.printStackTrace(); 
-	       }
+	         sesFact.getCurrentSession().update(user); 
+	        
 	}
 	
 	public void delete(User user) {
@@ -76,6 +70,14 @@ public class UserRepo {
 		System.out.println(username +" in selectByUsername");
 		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
 				" Users where user_name='"+username+"'", User.class).list();
+		System.out.println(users.toString());
+		return users.get(0);
+	}
+	
+	public User selectByEmail(String email) {
+		System.out.println(email +" in selectByEmail");
+		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
+				" Users where email='"+email+"'", User.class).list();
 		System.out.println(users.toString());
 		return users.get(0);
 	}
