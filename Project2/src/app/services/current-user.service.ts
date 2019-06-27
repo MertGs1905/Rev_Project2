@@ -22,7 +22,7 @@ export class CurrentUserService {
             .set('lastname', lastName)
             .set('email', email);
         console.log(payload);
-        return this.http.post(`${environment.apiUrl}/registerUser`, payload);
+        return this.http.post(`${environment.apiUrl}/auth/registerUser`, payload);
     }
 
     delete(id) {

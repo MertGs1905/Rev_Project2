@@ -6,39 +6,41 @@ import { IUser } from '../services/User';
 import { AuthenticationService } from '../services';
 
 @Component({
-  selector: 'app-post-form',
-  templateUrl: './post-form.component.html',
-  styleUrls: ['./post-form.component.css']
+    selector: 'app-post-form',
+    templateUrl: './post-form.component.html',
+    styleUrls: ['./post-form.component.css']
 })
 export class PostFormComponent implements OnInit {
-  postText: string;
-  post: IPost;
-  subscription: Subscription;
-  currentUser: IUser;
-  constructor(private postsService: PostService, private userService: AuthenticationService) {
-    this.subscription = this.userService.currentUser.subscribe(user => {
-      if (user) {
-        this.currentUser = user;
-      } else {
-        this.currentUser = null;
-      }
-    });
-  }
+    postText: string;
+    post: IPost;
+    subscription: Subscription;
+    currentUser: IUser;
+    constructor(private postsService: PostService, private userService: AuthenticationService) {
+        this.subscription = this.userService.currentUser.subscribe(user => {
+            if (user) {
+                this.currentUser = user;
+            } else {
+                this.currentUser = null;
+            }
+        });
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  setPost() {
-    this.post = {
-      postId: 0,
-      userid: this.currentUser.user_id,
-      post: this.postText,
-      rating: []
-    };
+    setPost() {
+        console.log(this.currentUser.user_id);
+        console.log(this.currentUser);
+        this.post = {
+            postId: 0,
+            userid: this.currentUser.user_id,
+            post: this.postText,
+            rating: []
+        };
 
-    console.log(this.post);
+        console.log(this.post);
 
-    this.postsService.addPost(this.post);
+        this.postsService.addPost(this.post);
 
-  }
+    }
 }

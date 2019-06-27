@@ -26,24 +26,12 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
+                console.log(JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
     }
-    registerNewUser(user) {
-        /*
-        const payload = new HttpParams().set('username', username).set('password', password);
-        return this.http.post<any>(`${environment.apiUrl}/user/register`, payload)
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
-            }));
-            */
-           const payload = new HttpParams().set('username', 'TestUser').set('password', '123!@#');
-           return this.http.post<any>(`${environment.apiUrl}/user/register`, payload);
-    }
+
     getusers() {
         return this.http.get<any>(`${environment.apiUrl}/user/getAllUsers`)
             .pipe(map(user => {
