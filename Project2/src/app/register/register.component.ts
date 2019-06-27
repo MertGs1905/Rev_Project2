@@ -34,7 +34,12 @@ export class RegisterComponent implements OnInit {
             user_id: 0,
             username: '',
             password: '',
-            profile: {user_id: 0, userEmail: '', firstName: '', lastName: '', hobby: '', occupation: '', birthday: '' }
+            email: '',
+            firstName: '',
+            lastName: '',
+            occupation: '',
+            birthdate: '',
+            hobbies: ''
         };
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -66,17 +71,17 @@ export class RegisterComponent implements OnInit {
         console.log(this.tForm);
         this.regUser.username = this.tForm.username;
         this.regUser.password = this.tForm.password;
-        this.regUser.profile.firstName = this.tForm.firstName;
-        this.regUser.profile.lastName = this.tForm.lastName;
-        this.regUser.profile.userEmail = this.tForm.email;
+        this.regUser.firstName = this.tForm.firstName;
+        this.regUser.lastName = this.tForm.lastName;
+        this.regUser.email = this.tForm.email;
         console.log(this.regUser);
 
         this.loading = true;
         this.userService.register(  this.regUser.username,
                                     this.regUser.password,
-                                    this.regUser.profile.firstName,
-                                    this.regUser.profile.lastName,
-                                    this.regUser.profile.userEmail)
+                                    this.regUser.firstName,
+                                    this.regUser.lastName,
+                                    this.regUser.email)
             .pipe(first())
             .subscribe(
                 data => {
