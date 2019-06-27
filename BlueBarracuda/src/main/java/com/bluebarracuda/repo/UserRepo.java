@@ -71,12 +71,13 @@ public class UserRepo {
 	              .createStoredProcedureQuery("GET_USER_HASH");
 	      procedureQuery.registerStoredProcedureParameter("username", String.class, ParameterMode.IN);
 	      procedureQuery.registerStoredProcedureParameter("password", String.class, ParameterMode.IN);
+	      procedureQuery.registerStoredProcedureParameter("hash", String.class, ParameterMode.OUT);
 	      procedureQuery.setParameter("username", username);
 	      procedureQuery.setParameter("password", password);
 	      procedureQuery.execute();
-	      Object singleResult = procedureQuery.getSingleResult();
+	      String singleResult = (String) procedureQuery.getOutputParameterValue("hash");
 	      System.out.println("sum: " + singleResult);
-	      return (String) singleResult;
+	      return singleResult;
 	}	
 	
 
