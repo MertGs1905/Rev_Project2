@@ -20,7 +20,7 @@ public class User {
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userId;
+	private int user_id;
 
 	@Column(name = "user_name", unique = true, nullable = false)
 	private String username;
@@ -63,11 +63,11 @@ public class User {
 	}
 
 	public int getUserId() {
-		return userId;
+		return user_id;
 	}
 
 	public void setUserId(int userId) {
-		this.userId = userId;
+		this.user_id = userId;
 	}
 
 	public String getUsername() {
@@ -152,7 +152,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", posts=" + posts
+		return "User [userId=" + user_id + ", username=" + username + ", password=" + password + ", posts=" + posts
 				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", occupation="
 				+ occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", imageLink=" + imageLink + "]";
 	}

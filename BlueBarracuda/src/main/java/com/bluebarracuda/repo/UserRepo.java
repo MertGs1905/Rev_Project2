@@ -2,16 +2,12 @@ package com.bluebarracuda.repo;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.ParameterMode;
-import javax.persistence.StoredProcedureQuery;
-
-import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.bluebarracuda.model.User;
 
 @Repository("userRepo")
@@ -45,6 +41,17 @@ public class UserRepo {
 		sesFact.getCurrentSession().update(user);
 	}
 	
+	public  void updatePass(User user, String randString) {
+		
+		
+	    String  newPass = getHashPass(user.getUsername(), randString);
+	  
+	         user.setPassword( newPass );
+	         
+	         sesFact.getCurrentSession().update(user); 
+	        
+	}
+	
 	public void delete(User user) {
 		sesFact.getCurrentSession().delete(user);;
 	}
@@ -63,12 +70,26 @@ public class UserRepo {
 		return user;
 	}
 	
+	public User selectByEmail(String email) {
+		System.out.println(email +" in selectByEmail");
+		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
+				" Users where email='"+email+"'", User.class).list();
+		System.out.println(users.toString());
+		return users.get(0);
+	}
+	
 	public List<User> selectAll(){
 		System.out.println();
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
+	public String getHashPass(String username, String password) {			
+		 String pass =  "'GET_USER_HASH('" + username + "', '" + password + "')";
 
+        
+        return pass;
+	}
+	
 	public User getHash(String username, String password) {			
 		List<User> user = sesFact.getCurrentSession().createQuery("FROM User" 
 				+ " WHERE username= '" + username
