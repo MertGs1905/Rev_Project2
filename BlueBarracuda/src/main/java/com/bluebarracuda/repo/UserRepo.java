@@ -2,8 +2,11 @@ package com.bluebarracuda.repo;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,6 +42,23 @@ public class UserRepo {
 	
 	public void update(User user) {
 		sesFact.getCurrentSession().update(user);
+	}
+	
+	public  void updatePass(User user, String randString) {
+		
+		Session session = sesFact.openSession();
+	      Transaction tx = null;
+	    String  newPass = getHash(user.getUsername(), randString);
+	      try{
+	         tx = session.beginTransaction();
+	         user = session.get(User.class, user.getPassword()); 
+	         user.setPassword( newPass );
+	         session.update(user); 
+	         tx.commit();
+	      }catch(HibernateException e) {
+	          if (tx!=null) tx.rollback();
+	          e.printStackTrace(); 
+	       }
 	}
 	
 	public void delete(User user) {

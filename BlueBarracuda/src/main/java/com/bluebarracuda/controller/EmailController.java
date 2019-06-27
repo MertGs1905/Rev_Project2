@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluebarracuda.email.MailService;
+import com.bluebarracuda.model.User;
+import com.bluebarracuda.repo.UserRepo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 public class EmailController {
-
+		
+		private User user;
+		private UserRepo userRepo;
 		private MailService mail;
 	
 	public EmailController() {
@@ -46,15 +50,14 @@ public class EmailController {
 					+ "you have forgotten your password. If that is not the case, please "
 					+ "consider that someone decided to prank you a little bit. In any case, "
 					+ "we suggest to change your password once you firstly log in."
-					+ "\n\n Your new Password is: \t"+ randString
-					+"\n\n Have a shitty day!!! ";
+					+ "\n\n Your new Password is: "+ randString;
 			
 			//sending email 
 			mail.sendEmail(senderEmailId, receiverEmailId, subject, message);
 			
 			//Updating password in database
 		
-			
+			userRepo.updatePass(user, randString);
 			
 		}
 		
@@ -68,6 +71,8 @@ public class EmailController {
 			}
 			return builder.toString().toLowerCase();
 		}
+		
+		
 	}
 	
 
