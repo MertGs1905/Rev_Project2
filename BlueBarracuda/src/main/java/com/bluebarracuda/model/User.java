@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,10 +48,11 @@ public class User {
 	 * @param profile
 	 */
 	public User(String username, String password, Profile profile) {
-		super();
+		
 		this.username = username;
 		this.password = password;
 		this.profile = profile;
+		System.out.println("Username: " + this.username + " password " + "  " + this.profile.toString());
 	}
 
 
@@ -100,6 +100,12 @@ public class User {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", profile=" + profile
+				+ ", posts=" + posts + "]";
 	}	
 	
 	
