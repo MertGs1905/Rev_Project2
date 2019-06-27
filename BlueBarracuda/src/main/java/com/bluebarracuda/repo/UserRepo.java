@@ -50,8 +50,9 @@ public class UserRepo {
 	}
 	
 	public User selectByUsername(String username) {
+		System.out.println("in selectbyusername");
 		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
-				" Users where username='"+username
+				" Users where user_name='"+username
 				+"'", User.class).list();
 		return users.get(0);
 	}
@@ -62,7 +63,7 @@ public class UserRepo {
 	}
 	
 	public String getHash(String username, String password) {
-		return (String) sesFact.getCurrentSession().createNativeQuery("SELECT GET_USER_HASH(:username, :password) FROM DUAL")
+		return (String) sesFact.getCurrentSession().createNativeQuery("SELECT GET_USER_HASH(:user_name, :password) FROM DUAL")
 		.setParameter("username", username)
 		.setParameter("password", password)
 		.getSingleResult();		

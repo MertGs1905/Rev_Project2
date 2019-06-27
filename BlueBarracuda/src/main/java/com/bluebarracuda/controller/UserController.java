@@ -51,7 +51,7 @@ public class UserController {
 		System.out.println("In Auth, Username input: " + username);
 		User tmp = userRepo.selectByUsername(username);
 		if(tmp.getPassword() == password)
-			return userRepo.selectByUsername(username);
+			return tmp;
 		else return null;
 	}
 	
