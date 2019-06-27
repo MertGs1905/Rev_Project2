@@ -30,12 +30,10 @@ export class PostFormComponent implements OnInit {
 
   setPost() {
     this.post = {
-      user: this.currentUser,
+      postId: 0,
+      userid: this.currentUser.user_id,
       post: this.postText,
-      rating: {
-        likes: 0,
-        dislikes: 0
-      }
+      rating: []
     };
 
     console.log(this.post);
