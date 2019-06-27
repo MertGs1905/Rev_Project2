@@ -64,9 +64,14 @@ public class Post {
 	public List<Rating> getRatings() {
 		return ratings;
 	}
+	
+	public void addRating(Rating rating) {
+		this.ratings.add(rating);
+	}
 
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
+	
 
 }

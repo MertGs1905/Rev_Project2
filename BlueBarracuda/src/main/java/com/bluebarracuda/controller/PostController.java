@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluebarracuda.model.Post;
+import com.bluebarracuda.model.Rating;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.PostRepo;
 import com.bluebarracuda.repo.UserRepo;
@@ -63,6 +64,13 @@ public class PostController {
 			postRepo.insert(post);
 		}
 
+	}
+	
+	@PostMapping(value="/likePost")
+	public void likePost(@RequestParam("postId") int postId, @RequestParam("userId") int userId) {
+		Post post = postRepo.selectById(postId);
+		Rating rating = new Rating();
+		
 	}
 
 }
