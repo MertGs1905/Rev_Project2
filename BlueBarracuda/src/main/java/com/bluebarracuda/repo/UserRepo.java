@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.bluebarracuda.model.Users;
+import com.bluebarracuda.model.User;
 
 @Repository("userRepo")
 @Transactional
@@ -29,33 +29,33 @@ public class UserRepo {
 		this.sesFact = sesFact;
 	}
 	
-	public int insert(Users user) {		
+	public int insert(User user) {		
 		System.out.println("In user insert");
 		return (int) sesFact.getCurrentSession().save(user);
 	}
 	
-	public void update(Users user) {
+	public void update(User user) {
 		sesFact.getCurrentSession().update(user);
 	}
 	
-	public void delete(Users user) {
+	public void delete(User user) {
 		sesFact.getCurrentSession().delete(user);;
 	}
 	
-	public Users selectById(int id) {
-		return sesFact.getCurrentSession().get(Users.class, id);
+	public User selectById(int id) {
+		return sesFact.getCurrentSession().get(User.class, id);
 	}
 	
-	public Users selectByUsername(String username) {
-		List<Users> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
+	public User selectByUsername(String username) {
+		List<User> users = sesFact.getCurrentSession().createNativeQuery("select * from"+
 				" Users where username='"+username
-				+"'", Users.class).list();
+				+"'", User.class).list();
 		return users.get(0);
 	}
 	
-	public List<Users> selectAll(){
+	public List<User> selectAll(){
 		System.out.println();
-		return sesFact.getCurrentSession().createQuery("from User", Users.class).list();
+		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
 	

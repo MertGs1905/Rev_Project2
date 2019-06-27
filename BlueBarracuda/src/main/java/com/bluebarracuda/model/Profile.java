@@ -45,7 +45,7 @@ public class Profile {
 	
     @OneToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    private User user;
 	
     
 	public int getProfileId() {
@@ -56,11 +56,11 @@ public class Profile {
 		this.profileId = profileId;
 	}
 
-	public Users getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

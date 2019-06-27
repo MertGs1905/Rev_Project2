@@ -24,7 +24,7 @@ public class Post {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
-	private Users user;
+	private User user;
 	
 	@Column(name="post_text", nullable=false)	
 	private String postText;
@@ -45,11 +45,11 @@ public class Post {
 		this.postId = postId;
 	}
 
-	public Users getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

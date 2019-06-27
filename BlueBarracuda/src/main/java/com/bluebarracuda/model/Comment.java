@@ -20,7 +20,7 @@ public class Comment {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "User_FK")
-	Users user;
+	User user;
 	
 	@Id
 	@Column(name="comment_id")
@@ -38,11 +38,11 @@ public class Comment {
 		
 	}
 
-	public Users getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

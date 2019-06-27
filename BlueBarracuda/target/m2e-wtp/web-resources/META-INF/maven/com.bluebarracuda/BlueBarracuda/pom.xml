@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -10,19 +9,11 @@
 	<name>BlueBarracuda</name>
 
 
-	<properties>
-=======
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.bluebarracuda</groupId>
-  <artifactId>BlueBarracuda</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>BlueBarracuda</name>
+	
   
   
   	<properties>
->>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
+
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
@@ -57,12 +48,7 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>5.1.5.RELEASE</version>
 		</dependency>
-<<<<<<< HEAD
 
-		<!-- Provides annotations and package scanning -->
-=======
-				
->>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -92,12 +78,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.1.Final</version>
 		</dependency>
-<<<<<<< HEAD
 
-		<!-- VALIDATOR -->
-=======
-		
->>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -109,24 +90,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.9</version>
 		</dependency>
-<<<<<<< HEAD
 
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-=======
-		
->>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
 
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-=======
-	
->>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -138,25 +109,16 @@
 			<artifactId>spring-aspects</artifactId>
 			<version>5.1.5.RELEASE</version>
 		</dependency>
-<<<<<<< HEAD
 
+		
+		
 
-=======
-		
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>4.0.1</version>
-		    <scope>provided</scope>
-		</dependency>
-		
->>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
 			<version>1.11.163</version>
 		</dependency>
-<<<<<<< HEAD
+
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
@@ -167,7 +129,6 @@
 		</dependency>
 
 
-=======
->>>>>>> 640d91a7c3ecb33811cc85c43577a2837a9b74a4
+
 	</dependencies>
 </project>

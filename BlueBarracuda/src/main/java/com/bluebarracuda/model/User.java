@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Users")
-public class Users {	
+public class User {	
 
 	@Id
 	@Column(name="user_id")
@@ -39,11 +39,9 @@ public class Users {
 	 @JsonIgnore
 	private List<Post> posts;
 
-	public Users() {	
+	public User() {	
 		
-	}
-	
-	
+	}	
 
 	/**
 	 * @param username
@@ -59,7 +57,7 @@ public class Users {
 
 
 
-	public Users(String username, String password) {
+	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
