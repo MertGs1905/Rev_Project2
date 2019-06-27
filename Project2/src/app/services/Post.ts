@@ -3,7 +3,7 @@ import { IRating } from './Rating';
 
 export interface IPost {
     postId?: number;
-    user: IUser;
+    userid: number;
     post: string;
-    rating: IRating;
+    rating: number[];
 }
