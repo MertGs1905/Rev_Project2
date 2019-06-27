@@ -1,5 +1,7 @@
 package com.bluebarracuda.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,11 +9,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="User")
+@Table(name="Users")
 public class User {	
 
 	@Id
@@ -25,20 +31,59 @@ public class User {
 	@Column(name="password", unique=true, nullable=false)
 	private String password;
 
-	@OneToOne(	fetch = FetchType.LAZY,
-				cascade =  CascadeType.ALL,
-				mappedBy = "user")
+	@OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="user_id")
 	private Profile profile;
+	
+	 @OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	 @JsonIgnore
+	private List<Post> posts;
 
-	public User(String username, String password) {
+	public User() {	
+		
+	}	
+
+	/**
+	 * @param username
+	 * @param password
+	 * @param profile
+	 */
+	public User(String username, String password, Profile profile) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.profile = profile;
 	}
-	
-	@Override
-	public String toString() {
-		return "user [username=" + username + ", password=" + password + "]";
+
+
+
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Profile getProfile() {
@@ -49,20 +94,13 @@ public class User {
 		this.profile = profile;
 	}
 
-	public String getUsername() {
-		return username;
+	public List<Post> getPosts() {
+		return posts;
 	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}	
 	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import * as AWS from 'aws-sdk/global';
-import * as S3 from 'aws-sdk/clients/s3';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '.';
+import * as AWS from 'aws-sdk';
+import * as S3 from 'aws-sdk/clients/s3';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UploadService {
           }
       );
         const params = {
-          Bucket: 'YOUR-BUCKET-NAME',
+          Bucket: 'group2019',
           Key: file.name,
           Body: file,
           ACL: 'public-read',

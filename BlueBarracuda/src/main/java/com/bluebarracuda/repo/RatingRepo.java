@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bluebarracuda.model.Ratings;
+import com.bluebarracuda.model.Rating;
 
 
 
@@ -35,25 +35,25 @@ public class RatingRepo {
 		this.sesFact = sesFact;
 	}
 	
-	public void insert(Ratings rate) {
+	public void insert(Rating rate) {
 		
 		sesFact.getCurrentSession().save(rate);
 	}
 	
-	public void update(Ratings rate) {
+	public void update(Rating rate) {
 		sesFact.getCurrentSession().update(rate);
 	}
 	
-	public void delete(Ratings rate) {
+	public void delete(Rating rate) {
 		sesFact.getCurrentSession().delete(rate);;
 	}
 	
-	public Ratings selectById(int id) {
-		return sesFact.getCurrentSession().get(Ratings.class, id);
+	public Rating selectById(int id) {
+		return sesFact.getCurrentSession().get(Rating.class, id);
 	}
 	
-	public List<Ratings> selectAll(){
-		return sesFact.getCurrentSession().createQuery("from Ratings", Ratings.class).list();
+	public List<Rating> selectAll(){
+		return sesFact.getCurrentSession().createQuery("from Rating", Rating.class).list();
 	}
 	
 }

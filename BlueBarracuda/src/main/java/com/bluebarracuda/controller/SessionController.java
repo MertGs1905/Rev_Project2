@@ -2,6 +2,7 @@ package com.bluebarracuda.controller;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,31 +47,35 @@ public class SessionController {
 		
 		Profile profile = new Profile(email, firstname, lastname);
 		System.out.println(profile.toString());
-		User newUser = new User(username, password);
-		newUser.setProfile(profile);
+
+		User newUser = new User(username, password, profile);
+		//newUser.setProfile(profile);
+
 		System.out.println(newUser.toString());
 		userRepo.insert(newUser);
 	}
 	
 	
 	
-	@GetMapping(value="/login")
-	public String login(HttpSession session) {
-		System.out.println("in the login method");
+	@PostMapping(value="/authenticate")
+	public @ResponseBody User login(
+			@RequestParam("username") String username,
+			@RequestParam("password") String password) {
 		
-		session.setAttribute("loggedName", "MyNameIsPeachesAndImTheBest");
-		session.setAttribute("loggedPass", "soulglow");
-		
-		System.out.println("\n\n\n");
-		return "extpa";
+		System.out.println("In Auth, Username input: " + username);
+		User tmp = userRepo.selectByUsername(username);
+		if(tmp.getPassword() == password)
+			return userRepo.selectByUsername(username);
+		else return null;
 	}
 	
-	@GetMapping(value="/logout")
-	public String logout(HttpSession session) {
-		System.out.println("in the logout method");
-		session.invalidate();
-		
-		System.out.println("\n\n\n");
-		return "extpa";
-	}
+	
+//	@GetMapping(value="/logout")
+//	public String logout(HttpSession session) {
+//		System.out.println("in the logout method");
+//		session.invalidate();
+//		
+//		System.out.println("\n\n\n");
+//		return "extpa";
+//	}
 }

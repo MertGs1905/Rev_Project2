@@ -1,5 +1,7 @@
 package com.bluebarracuda.model;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,67 +23,50 @@ public class Post {
 	private int postId;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "User_FK")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@Column(name="post_text", nullable=false)	
 	private String postText;
 	
-	@Column(name="likes")
-	private int likes;
-	
-	@Column(name="dislikes")
-	private int dislikes;
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="post_id")
+	private List<Rating> ratings;
 
 	public Post() {
+		
 	}
 
-	/**
-	 * @param user
-	 * @param postText
-	 * @param likes
-	 * @param dislikes
-	 */
-	public Post(User user, String postText, int likes, int dislikes) {
-		super();
-		this.user = user;
-		this.postText = postText;
-		this.likes = likes;
-		this.dislikes = dislikes;
+	public int getPostId() {
+		return postId;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Post [user=" + user 
-				+ ", post=" + postText 
-				+ ", likes=" + likes 
-				+ ", dislikes " + dislikes + "]";
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
-
 	}
 
 	public String getPostText() {
 		return postText;
 	}
 
-	public void setPostText(String post) {
-		this.postText = post;
+	public void setPostText(String postText) {
+		this.postText = postText;
 	}
 
-	public int getLikes() {
-		return likes;
+	public List<Rating> getRatings() {
+		return ratings;
 	}
 
-	public void setLikes(int likes) {
-		this.likes = likes;
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
+
 }
