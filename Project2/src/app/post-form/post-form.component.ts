@@ -33,7 +33,7 @@ export class PostFormComponent implements OnInit {
         console.log(this.currentUser);
         this.post = {
             postId: 0,
-            userid: this.currentUser.user_id,
+            user_id: this.currentUser.user_id,
             post: this.postText,
             rating: []
         };

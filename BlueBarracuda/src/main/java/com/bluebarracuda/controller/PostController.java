@@ -53,9 +53,9 @@ public class PostController {
 
 	@PostMapping(value = "/newPost")
 	public void addPost(@RequestParam("postText") String postText,
-			@RequestParam("userId") int userId) {
+			@RequestParam("user_id") int user_id) {
 
-		User user = userRepo.selectById(userId);
+		User user = userRepo.selectById(user_id);
 		if (user != null) {
 			Post post = new Post();
 			post.setPostText(postText);

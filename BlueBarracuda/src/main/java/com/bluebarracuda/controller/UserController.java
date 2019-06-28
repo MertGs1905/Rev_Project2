@@ -37,8 +37,8 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/getUserById")
-	public @ResponseBody User getUserById(@RequestParam("userId") int userId) {
-		return userRepo.selectById(userId);
+	public @ResponseBody User getUserById(@RequestParam("user_id") int user_id) {
+		return userRepo.selectById(user_id);
 	}
 	
 	@PostMapping(value="/getUserByUsername")

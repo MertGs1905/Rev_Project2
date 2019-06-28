@@ -62,12 +62,12 @@ public class User {
 		this.username = username;
 	}
 
-	public int getUserId() {
+	public int getUser_id() {
 		return user_id;
 	}
 
-	public void setUserId(int userId) {
-		this.user_id = userId;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getUsername() {
@@ -152,7 +152,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + user_id + ", username=" + username + ", password=" + password + ", posts=" + posts
+		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", posts=" + posts
 				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", occupation="
 				+ occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", imageLink=" + imageLink + "]";
 	}

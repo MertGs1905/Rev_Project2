@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   currentUser: IUser;
   userProfile: UserProfile;
   bannerImage = 'assets/Cool-Cat-Cropped.jpg';
-  userId: number;
+  user_id: number;
 
   constructor(private route: ActivatedRoute, private userService: AuthenticationService, private fetchUserService: CurrentUserService) {
     this.currentUser = {
@@ -36,13 +36,13 @@ export class ProfileComponent implements OnInit {
       this.userService.currentUser.subscribe(
         cUser => this.logUser = cUser
       );
-      this.userId = +this.route.snapshot.paramMap.get('id');
-      console.log(this.userId);
+      this.user_id = +this.route.snapshot.paramMap.get('id');
+      console.log(this.user_id);
       this.getUser();
   }
 
   getUser(): void {
-    this.fetchUserService.getById(this.userId).subscribe(
+    this.fetchUserService.getById(this.user_id).subscribe(
         cUser => this.currentUser = cUser
     );
   }
