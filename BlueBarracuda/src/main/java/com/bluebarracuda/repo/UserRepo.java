@@ -41,17 +41,6 @@ public class UserRepo {
 		sesFact.getCurrentSession().update(user);
 	}
 	
-	public  void updatePass(User user, String randString) {
-		
-		
-	    String  newPass = getHashPass(user.getUsername(), randString);
-	  
-	         user.setPassword( newPass );
-	         
-	         sesFact.getCurrentSession().update(user); 
-	        
-	}
-	
 	public void delete(User user) {
 		sesFact.getCurrentSession().delete(user);;
 	}
@@ -81,13 +70,6 @@ public class UserRepo {
 	public List<User> selectAll(){
 		System.out.println();
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
-	}
-	
-	public String getHashPass(String username, String password) {			
-		 String pass =  "'GET_USER_HASH('" + username + "', '" + password + "')";
-
-        
-        return pass;
 	}
 	
 	public User getHash(String username, String password) {			

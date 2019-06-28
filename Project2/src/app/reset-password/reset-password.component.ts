@@ -12,7 +12,7 @@ import { UserProfile } from '../services/Profile';
 })
 export class ResetPasswordComponent implements OnInit {
     email = '';
-    userId: number;
+    user_id: number;
     userProfile: UserProfile;
     passwordForm: FormGroup;
 

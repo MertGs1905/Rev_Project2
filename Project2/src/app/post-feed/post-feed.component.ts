@@ -14,10 +14,14 @@ export class PostFeedComponent implements OnInit, OnDestroy {
   postSub: Subscription;
   posts: IPost[];
   constructor(private postService: PostService) {
-    this.postSub = this.postService.posts.subscribe(posts => this.posts = posts);
+
   }
 
   ngOnInit() {
+    this.postSub = this.postService.posts.subscribe(posts => {
+        console.log(posts);
+        this.posts = posts;
+    });
   }
 
   ngOnDestroy() {
