@@ -11,6 +11,14 @@ import com.bluebarracuda.model.Rating;
 
 
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @Repository("ratingRepo")
 @Transactional
 public class RatingRepo {
@@ -23,35 +31,60 @@ public class RatingRepo {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private SessionFactory sesFact;
 
+	/**
+	 * 
+	 */
 	public RatingRepo() {
 	}
 	
 
+	/**
+	 * @param sesFact
+	 */
 	@Autowired
 	public RatingRepo(SessionFactory sesFact) {
 		super();
 		this.sesFact = sesFact;
 	}
 	
+	/**
+	 * @param rate
+	 */
 	public void insert(Rating rate) {
 		
 		sesFact.getCurrentSession().save(rate);
 	}
 	
+	/**
+	 * @param rate
+	 */
 	public void update(Rating rate) {
 		sesFact.getCurrentSession().update(rate);
 	}
 	
+	/**
+	 * @param rate
+	 */
 	public void delete(Rating rate) {
 		sesFact.getCurrentSession().delete(rate);;
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	public Rating selectById(int id) {
 		return sesFact.getCurrentSession().get(Rating.class, id);
 	}
 	
+	/**
+	 * @return
+	 */
 	public List<Rating> selectAll(){
 		return sesFact.getCurrentSession().createQuery("from Rating", Rating.class).list();
 	}

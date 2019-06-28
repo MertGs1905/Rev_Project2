@@ -14,9 +14,23 @@ import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 public class EmailController {
+
+		/**
+		 * 	MailService is a dependancy of EmailController
+		 */
+
 		
 		private User user;
 		private UserRepo userRepo;
@@ -26,6 +40,9 @@ public class EmailController {
 		
 	}
 	
+	/**
+	 * @param mail
+	 */
 	@Autowired
 	public EmailController(MailService mail) {
 		this.mail = mail;
@@ -33,6 +50,12 @@ public class EmailController {
 	
 	
 
+	/**
+	 * Method called when a user clicks the forgot password button on the login screen. An auto generated email is sent to the user
+	 * containing a randomly generated temporary password allowing the user to login and update their password.  
+	 * 
+	 * @throws JsonProcessingException
+	 */
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
 	public @ResponseBody void doRestPwd(@RequestParam("email") String email) throws JsonProcessingException {
 	
@@ -58,13 +81,13 @@ public class EmailController {
 			
 			user = userRepo.selectByEmail(receiverEmailId);
 			
-			//Updating password in database
-			User newUser = userRepo.getHash(user.getUsername(), randString);
-			
-			userRepo.update(newUser);
-			
 		}
 		
+		/**
+		 * called by doRestPwd. Method creates an random 8 digit alphanumeric temporary password to facilitate user password reset request  
+		 * 
+		 * @return 
+		 */
 		public static String generateAlphaNumericPassword(){
 			final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 			int len = 10;

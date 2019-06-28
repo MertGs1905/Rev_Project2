@@ -8,11 +8,22 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @Configuration
 @ComponentScan(basePackages = "com.bluebarracuda.email")
 public class AppConfig
 {
 
+	/**
+	 * @return
+	 */
 	@Bean
 	public JavaMailSender getMailSender()
 	{

@@ -9,13 +9,27 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @Service("mailService")
 public class MailServiceImpl implements MailService
 {
 
+	/**
+	 * JavaMailSender is a Spring managed dependancy of MailServiceImpl
+	 */
 	@Autowired
 	JavaMailSender mailSender;
 
+	/**
+	 *
+	 */
 	public void sendEmail(final String senderEmailId, final String receiverEmailId,
 			final String subject, final String message)
 	{
@@ -23,6 +37,9 @@ public class MailServiceImpl implements MailService
 		MimeMessagePreparator preparator = new MimeMessagePreparator()
 		{
 
+			/**
+			 *
+			 */
 			public void prepare(MimeMessage mimeMessage) throws Exception
 			{
 				mimeMessage.setFrom(senderEmailId);

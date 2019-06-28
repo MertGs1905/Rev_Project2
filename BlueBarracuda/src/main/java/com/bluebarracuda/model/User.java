@@ -13,6 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -159,7 +167,5 @@ public class User {
 				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", occupation="
 				+ occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", imageLink=" + imageLink + "]";
 	}
-
-	
 
 }

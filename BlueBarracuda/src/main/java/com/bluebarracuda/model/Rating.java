@@ -14,9 +14,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import com.bluebarracuda.model.User;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @Entity()
 @Table(name="Rating")
 public class Rating {	
+	
 	@Id
 	@Column(name="rating_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -63,9 +72,6 @@ public class Rating {
 	public String toString() {
 		return "Rating [ratingId=" + ratingId + ", user=" + user + "]";
 	}
-	
-	
-	
 	
 }
 

@@ -18,19 +18,40 @@ import com.bluebarracuda.repo.PostRepo;
 import com.bluebarracuda.repo.RatingRepo;
 import com.bluebarracuda.repo.UserRepo;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
 // @RequestMapping(value = "/post")
 public class PostController {
 
+	/**
+	 * PostRepo is a Spring managed dependency of PostController 
+	 */
 	private PostRepo postRepo;
+	/**
+	 * UserRepo is a Spring managed dependency of PostController
+	 */
 	private UserRepo userRepo;
 	private RatingRepo ratingRepo;
 
+	/**
+	 * 
+	 */
 	public PostController() {
 
 	}
 
+	/**
+	 * @param postRepo
+	 * @param userRepo
+	 */
 	@Autowired
 	public PostController(PostRepo postRepo, UserRepo userRepo, RatingRepo ratingRepo) {
 		this.postRepo = postRepo;
@@ -38,6 +59,9 @@ public class PostController {
 		this.ratingRepo = ratingRepo;
 	}
 
+	/**
+	 * @return A list of all Post(s) associated with a specific User
+	 */
 	@GetMapping(value = "/post/getAllPosts")
 	public @ResponseBody List<Post> getAllPosts() {
 		System.out.println("Inside Get all posts");
@@ -49,11 +73,23 @@ public class PostController {
 
 	}
 
+	/**
+	 * @param postId
+	 * @return A single Post determined by the provided postId
+	 */
 	@PostMapping(value = "/post/getPostById")
 	public @ResponseBody Post getPostById(@RequestParam("postId") int postId) {
 		return postRepo.selectById(postId);
 	}
 
+	/**
+	 * 
+	 * Calls the appropriate postRepo method in order to add a new Post from a specific User
+	 * 
+	 * @param postText
+	 * @param userId
+	 */
+	
 	@PostMapping(value = "/post/newPost")
 
 	public @ResponseBody boolean addPost(@RequestParam("postText") String postText,
