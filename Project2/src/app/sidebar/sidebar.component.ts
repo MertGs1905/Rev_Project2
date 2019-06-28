@@ -4,6 +4,7 @@ import { CurrentUserService } from '../services/current-user.service';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../services';
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-sidebar',
@@ -14,7 +15,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     currentUser: IUser;
     userList: IUser[];
-    constructor(private userService: CurrentUserService, private authenticationService: AuthenticationService) {
+    constructor(private route: Router, private userService: CurrentUserService, private authenticationService: AuthenticationService) {
         this.subscription = this.authenticationService.currentUser.subscribe(user => {
             if (user) {
                 this.currentUser = user;
@@ -42,11 +43,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
-
 }
-function getUsers() {
 
-}
 
 // $(document).ready(function () {
 
