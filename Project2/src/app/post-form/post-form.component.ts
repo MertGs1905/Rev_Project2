@@ -29,8 +29,6 @@ export class PostFormComponent implements OnInit {
     }
 
     setPost() {
-        console.log(this.currentUser.user_id);
-        console.log(this.currentUser);
         this.post = {
             postId: 0,
             user_id: this.currentUser.user_id,

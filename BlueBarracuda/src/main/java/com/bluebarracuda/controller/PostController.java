@@ -54,12 +54,14 @@ public class PostController {
 	@PostMapping(value = "/newPost")
 	public void addPost(@RequestParam("postText") String postText,
 			@RequestParam("user_id") int user_id) {
-
+		System.out.println(postText + " : " + user_id);
 		User user = userRepo.selectById(user_id);
+		System.out.println(user);
 		if (user != null) {
 			Post post = new Post();
 			post.setPostText(postText);
 			post.setUser(user);
+			System.out.println(post);
 			postRepo.insert(post);
 		}
 
