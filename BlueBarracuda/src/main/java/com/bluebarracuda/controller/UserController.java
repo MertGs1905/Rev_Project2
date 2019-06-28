@@ -74,7 +74,6 @@ public class UserController {
 		return userRepo.selectByUsername(username);
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param username
 	 * @param password
@@ -89,17 +88,5 @@ public class UserController {
 		else return null;
 	}
 	
-||||||| merged common ancestors
-	@PostMapping(value="/authenticate")
-	public @ResponseBody User login(@RequestParam("username") String username, @RequestParam("password") String password) {
-		System.out.println("In Auth, Username input: " + username);
-		User tmp = userRepo.selectByUsername(username);
-		if(tmp.getPassword() == password)
-			return userRepo.selectByUsername(username);
-		else return null;
-	}
-	
-=======
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 
 }

@@ -109,25 +109,13 @@ public class UserRepo {
 		return sesFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * @param username
 	 * @param password
 	 * @return
 	 */
-	public String getHash(String username, String password) {
-		return (String) sesFact.getCurrentSession().createNativeQuery("SELECT GET_USER_HASH(:username, :password) FROM DUAL")
-		.setParameter("username", username)
-		.setParameter("password", password)
-		.getSingleResult();		
-||||||| merged common ancestors
-	public String getHash(String username, String password) {
-		return (String) sesFact.getCurrentSession().createNativeQuery("SELECT GET_USER_HASH(:username, :password) FROM DUAL")
-		.setParameter("username", username)
-		.setParameter("password", password)
-		.getSingleResult();		
-=======
-	public User getHash(String username, String password) {			
+	
+		public User getHash(String username, String password) {			
 		List<User> user = sesFact.getCurrentSession().createQuery("FROM User" 
 				+ " WHERE username= '" + username
                 + "' AND password = GET_USER_HASH('" 
@@ -137,7 +125,6 @@ public class UserRepo {
             return null;
         }  
         return user.get(0);
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 	}
 
 

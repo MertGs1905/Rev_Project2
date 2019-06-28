@@ -26,18 +26,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 public class EmailController {
-<<<<<<< HEAD
 
 		/**
 		 * 	MailService is a dependancy of EmailController
 		 */
-||||||| merged common ancestors
 
-=======
 		
 		private User user;
 		private UserRepo userRepo;
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 		private MailService mail;
 	
 	public EmailController() {
@@ -73,13 +69,7 @@ public class EmailController {
 			String receiverEmailId = email;
 			System.out.println(receiverEmailId);
 			String subject = "Your Password Has Been Successfully Reset";
-<<<<<<< HEAD
-			String message = "Your account is at serious threat. On our end it looks like "
-||||||| merged common ancestors
-			String message = "Your account is at serious thread. On our end it looks like "
-=======
 			String message = "It looks like "
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 					+ "you have forgotten your password. If that is not the case, please "
 					+ "consider that someone decided to prank you a little bit. In any case, "
 					+ "we suggest to change your password once you firstly log in."
@@ -91,18 +81,6 @@ public class EmailController {
 			
 			user = userRepo.selectByEmail(receiverEmailId);
 			
-			//Updating password in database
-<<<<<<< HEAD
-||||||| merged common ancestors
-		
-			
-			
-=======
-			User newUser = userRepo.getHash(user.getUsername(), randString);
-			
-			userRepo.update(newUser);
-			
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 		}
 		
 		/**

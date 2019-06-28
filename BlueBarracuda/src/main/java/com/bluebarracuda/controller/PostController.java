@@ -59,16 +59,10 @@ public class PostController {
 		this.ratingRepo = ratingRepo;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return A list of all Post(s) associated with a specific User
 	 */
-	@GetMapping(value = "/getAllPosts")
-||||||| merged common ancestors
-	@GetMapping(value = "/getAllPosts")
-=======
 	@GetMapping(value = "/post/getAllPosts")
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 	public @ResponseBody List<Post> getAllPosts() {
 		System.out.println("Inside Get all posts");
 		List<Post> posts = postRepo.SelectAll();
@@ -79,22 +73,15 @@ public class PostController {
 
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param postId
 	 * @return A single Post determined by the provided postId
 	 */
-	@PostMapping(value = "/getPostById")
-||||||| merged common ancestors
-	@PostMapping(value = "/getPostById")
-=======
 	@PostMapping(value = "/post/getPostById")
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 	public @ResponseBody Post getPostById(@RequestParam("postId") int postId) {
 		return postRepo.selectById(postId);
 	}
 
-<<<<<<< HEAD
 	/**
 	 * 
 	 * Calls the appropriate postRepo method in order to add a new Post from a specific User
@@ -102,14 +89,7 @@ public class PostController {
 	 * @param postText
 	 * @param userId
 	 */
-	@PostMapping(value = "/newPost")
-	public void addPost(@RequestParam("postText") String postText,
-			@RequestParam("userId") int userId) {
-||||||| merged common ancestors
-	@PostMapping(value = "/newPost")
-	public void addPost(@RequestParam("postText") String postText,
-			@RequestParam("userId") int userId) {
-=======
+	
 	@PostMapping(value = "/post/newPost")
 
 	public @ResponseBody boolean addPost(@RequestParam("postText") String postText,
@@ -120,7 +100,6 @@ public class PostController {
 		System.out.println(postText + " : " + user_id);
 		User user = userRepo.selectById(user_id);
 		System.out.println(user);
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 
 		if (user != null) {
 			Post post = new Post();

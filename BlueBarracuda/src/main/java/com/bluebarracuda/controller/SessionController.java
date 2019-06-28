@@ -55,6 +55,17 @@ public class SessionController {
 		System.out.println(pass);
 	}
 	
+	/**
+	 * 
+	 * Method which extracts the parameters from an HTTP request and calls the appropriate method 
+	 * of the UserRepo to register a new User and hash their password
+	 * 
+	 * @param usernameParam
+	 * @param passwordParam
+	 * @param firstnameParam
+	 * @param lastnameParam
+	 * @param emailParam
+	 */
 	@PostMapping(value="/updateUserProfile")
 	public @ResponseBody User updateUser(@RequestParam("username") String usernameParam,
 			@RequestParam("password") String passwordParam,@RequestParam("hobbies") String hobbiesParam, @RequestParam("email") String emailParam, 
@@ -67,20 +78,6 @@ public class SessionController {
 				String email = emailParam;
 				String profession = professionParam;
 
-<<<<<<< HEAD
-	/**
-	 * 
-	 * Method which extracts the parameters from an HTTP request and calls the appropriate method 
-	 * of the UserRepo to register a new User and hash their password
-	 * 
-	 * @param usernameParam
-	 * @param passwordParam
-	 * @param firstnameParam
-	 * @param lastnameParam
-	 * @param emailParam
-	 */
-||||||| merged common ancestors
-=======
 				User newUser = new User(username, password);
 				User updateUser = new User(username, password);
 				updateUser.setUsername(username);
@@ -94,7 +91,6 @@ public class SessionController {
 				return updateUser;
 			}
 	
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 	@PostMapping(value = "/registerUser")
 	public @ResponseBody ResponseEntity<User> registerUser(@RequestParam("username") String usernameParam,
 			@RequestParam("password") String passwordParam, @RequestParam("firstname") String firstnameParam,
@@ -129,7 +125,6 @@ public class SessionController {
 	@PostMapping(value = "/authenticate")
 	public @ResponseBody ResponseEntity<User> login(@RequestParam("username") String username,
 			@RequestParam("password") String password) {
-<<<<<<< HEAD
 		System.out.println("In Auth, Username input: " + username);
 		User tmp = userRepo.selectByUsername(username);
 
@@ -142,29 +137,12 @@ public class SessionController {
 				return null;
 		}
 		return tmp;
-||||||| merged common ancestors
-		System.out.println("In Auth, Username input: " + username);
-		User tmp = userRepo.selectByUsername(username);
-
-		String hash = userRepo.getHash(username, password);
-		if(hash != null) {
-			System.out.println("hash: " + hash + " pw: " + tmp.getPassword());
-			if (tmp.getPassword().equals(hash))
-				return tmp;
-			else
-				return null;
-		}
-		return tmp;
-		
-
-=======
 		System.out.println("In Auth, Username input: " + username);	
 		User user = userRepo.getHash(username, password);
 		if (user == null) {
 			return  new ResponseEntity<User>(new User(), HttpStatus.UNAUTHORIZED);
 		}		
 		return new ResponseEntity<User>(user, HttpStatus.OK);
->>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 	}
 
 }
