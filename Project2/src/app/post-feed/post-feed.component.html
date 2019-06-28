@@ -1,5 +1,5 @@
 
-<div id="feed-container" class="container-fluid">
+<div id="feed-container" class="container-fluid" (click)=refresh()>
     <div id="post-feed" class="container">
         <app-post-card
           *ngFor="let post of posts"

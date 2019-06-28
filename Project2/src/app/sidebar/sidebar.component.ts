@@ -13,7 +13,7 @@ import { first } from 'rxjs/operators';
 export class SidebarComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     currentUser: IUser;
-    userList = new Array();
+    userList: IUser[];
     constructor(private userService: CurrentUserService, private authenticationService: AuthenticationService) {
         this.subscription = this.authenticationService.currentUser.subscribe(user => {
             if (user) {
@@ -34,7 +34,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
                     this.userList = null;
                 }
             });
-            this.userList.push(temp);
         }
 
     }
