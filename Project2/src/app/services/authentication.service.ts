@@ -22,7 +22,7 @@ export class AuthenticationService {
     login(username, password) {
         username = username.toLowerCase();
         const payload = new HttpParams().set('username', username).set('password', password);
-        return this.http.post<any>(`${environment.apiUrl}/auth/authenticate`, payload)
+        return this.http.post<IUser>(`${environment.apiUrl}/auth/authenticate`, payload)
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -38,6 +38,7 @@ export class AuthenticationService {
                 return user;
             }));
     }
+
     logout() {
         // remove user from local storage and set current user to null
         localStorage.removeItem('currentUser');

@@ -59,7 +59,9 @@ public class EmailController {
 			user = userRepo.selectByEmail(receiverEmailId);
 			
 			//Updating password in database
-			userRepo.updatePass(user, randString);
+			User newUser = userRepo.getHash(user.getUsername(), randString);
+			
+			userRepo.update(newUser);
 			
 		}
 		

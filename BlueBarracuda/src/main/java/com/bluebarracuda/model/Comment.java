@@ -30,7 +30,7 @@ public class Comment {
 	@Column(name="comment")
 	private String comment;		
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="post_id")
 	private List<Rating> ratings;
 	

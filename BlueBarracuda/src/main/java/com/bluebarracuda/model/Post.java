@@ -17,6 +17,11 @@ import javax.persistence.Table;
 @Table(name = "Post")
 public class Post {
 
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", user=" + user + ", postText=" + postText + ", ratings=" + ratings + "]";
+	}
+
 	@Id
 	@Column(name = "post_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,8 +38,7 @@ public class Post {
     @JoinColumn(name="post_id")
 	private List<Rating> ratings;
 
-	public Post() {
-		
+	public Post() {		
 	}
 
 	public int getPostId() {
@@ -64,9 +68,14 @@ public class Post {
 	public List<Rating> getRatings() {
 		return ratings;
 	}
+	
+	public void addRating(Rating rating) {
+		this.ratings.add(rating);
+	}
 
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
+	
 
 }

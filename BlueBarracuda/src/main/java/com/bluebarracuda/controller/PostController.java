@@ -12,57 +12,79 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluebarracuda.model.Post;
+import com.bluebarracuda.model.Rating;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.PostRepo;
+import com.bluebarracuda.repo.RatingRepo;
 import com.bluebarracuda.repo.UserRepo;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
-@RequestMapping(value = "/post")
+// @RequestMapping(value = "/post")
 public class PostController {
 
 	private PostRepo postRepo;
 	private UserRepo userRepo;
+	private RatingRepo ratingRepo;
 
 	public PostController() {
 
 	}
 
 	@Autowired
-	public PostController(PostRepo postRepo, UserRepo userRepo) {
+	public PostController(PostRepo postRepo, UserRepo userRepo, RatingRepo ratingRepo) {
 		this.postRepo = postRepo;
 		this.userRepo = userRepo;
+		this.ratingRepo = ratingRepo;
 	}
 
-	@GetMapping(value = "/getAllPosts")
+	@GetMapping(value = "/post/getAllPosts")
 	public @ResponseBody List<Post> getAllPosts() {
 		System.out.println("Inside Get all posts");
 		List<Post> posts = postRepo.SelectAll();
 		if(posts.isEmpty()) {
-			posts.add(new Post());
-			
+			posts.add(new Post());			
 		}
 		return posts;
 
 	}
 
-	@PostMapping(value = "/getPostById")
+	@PostMapping(value = "/post/getPostById")
 	public @ResponseBody Post getPostById(@RequestParam("postId") int postId) {
 		return postRepo.selectById(postId);
 	}
 
-	@PostMapping(value = "/newPost")
-	public void addPost(@RequestParam("postText") String postText,
-			@RequestParam("userId") int userId) {
+	@PostMapping(value = "/post/newPost")
 
-		User user = userRepo.selectById(userId);
+	public @ResponseBody boolean addPost(@RequestParam("postText") String postText,
+			@RequestParam("user_id") int user_id) {
+		
+
+	
+		System.out.println(postText + " : " + user_id);
+		User user = userRepo.selectById(user_id);
+		System.out.println(user);
+
 		if (user != null) {
 			Post post = new Post();
 			post.setPostText(postText);
 			post.setUser(user);
+			System.out.println(post);
 			postRepo.insert(post);
-		}
-
+		}	
+		return true;
+	}
+	
+	@PostMapping(value="/likePost")
+	public @ResponseBody Post likePost(@RequestParam("postId") int postId, @RequestParam("userId") int userId) {
+		Post post = postRepo.selectById(postId);
+		Rating rating = new Rating();
+		rating.setUser(userRepo.selectById(userId));
+		rating.setPost(post);
+		ratingRepo.insert(rating);
+		post.addRating(rating);
+		postRepo.update(post);
+		return post;		
 	}
 
 }
