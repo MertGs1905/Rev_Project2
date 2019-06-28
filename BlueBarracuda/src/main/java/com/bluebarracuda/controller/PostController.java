@@ -55,17 +55,16 @@ public class PostController {
 	}
 
 	@PostMapping(value = "/newPost")
-<<<<<<< HEAD
+
 	public @ResponseBody boolean addPost(@RequestParam("post") String postText,
-			@RequestParam("user_id") int userId) {
-		User user = userRepo.selectById(userId);
-=======
-	public void addPost(@RequestParam("postText") String postText,
 			@RequestParam("user_id") int user_id) {
+		
+
+	
 		System.out.println(postText + " : " + user_id);
 		User user = userRepo.selectById(user_id);
 		System.out.println(user);
->>>>>>> 10c07d87cbd7ebb1f7fbe9a3e53e97eba2c47fbb
+
 		if (user != null) {
 			Post post = new Post();
 			post.setPostText(postText);
