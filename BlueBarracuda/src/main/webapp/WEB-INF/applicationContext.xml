@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" 
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -14,6 +15,9 @@
 	<tx:annotation-driven />
 	<!-- THIS IS THE ONLY THING WE NEED FOR SPRING MVC SPECIFICALLY -->
 	<mvc:annotation-driven/>
+	
+	<aop:aspectj-autoproxy />
+	
 	<mvc:cors>
 		<mvc:mapping path="/**"
 		allowed-origins="http://localhost:4200" allow-credentials="true" />
