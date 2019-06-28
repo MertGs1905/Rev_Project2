@@ -46,7 +46,6 @@ public class PostRepo {
 	}
 	
 	public List<Post> SelectAll(){		
-		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list(); 
-				
+		return sesFact.getCurrentSession().createQuery("from Post", Post.class).list();				
 	}
 }

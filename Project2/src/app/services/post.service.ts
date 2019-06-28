@@ -13,9 +13,20 @@ export class PostService {
     posts: Observable<IPost[]>;
     currentUser: IUser;
 
+<<<<<<< HEAD
+    constructor(private http: HttpClient) {
+        this.http.get<IPost[]>(`${environment.apiUrl}/post/getAllPosts`)
+            .subscribe(posts => {
+                console.log(posts);
+                this.dataStore = posts;
+                this.posts = this.postSub.asObservable();
+                this.postSub.next(Object.assign({}, this.dataStore).posts);
+            });
+=======
     constructor(private http: HttpClient, private userService: AuthenticationService) {
         this.posts = this.http.get<IPost[]>(`${environment.apiUrl}/getAllPosts`);
         userService.currentUser.subscribe(cUser => this.currentUser = cUser);
+>>>>>>> 10c07d87cbd7ebb1f7fbe9a3e53e97eba2c47fbb
     }
 
     addPost(post: IPost) {
