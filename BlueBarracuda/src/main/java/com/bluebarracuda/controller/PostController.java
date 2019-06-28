@@ -15,6 +15,7 @@ import com.bluebarracuda.model.Post;
 import com.bluebarracuda.model.Rating;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.PostRepo;
+import com.bluebarracuda.repo.RatingRepo;
 import com.bluebarracuda.repo.UserRepo;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,15 +25,17 @@ public class PostController {
 
 	private PostRepo postRepo;
 	private UserRepo userRepo;
+	private RatingRepo ratingRepo;
 
 	public PostController() {
 
 	}
 
 	@Autowired
-	public PostController(PostRepo postRepo, UserRepo userRepo) {
+	public PostController(PostRepo postRepo, UserRepo userRepo, RatingRepo ratingRepo) {
 		this.postRepo = postRepo;
 		this.userRepo = userRepo;
+		this.ratingRepo = ratingRepo;
 	}
 
 	@GetMapping(value = "/getAllPosts")
@@ -40,8 +43,7 @@ public class PostController {
 		System.out.println("Inside Get all posts");
 		List<Post> posts = postRepo.SelectAll();
 		if(posts.isEmpty()) {
-			posts.add(new Post());
-			
+			posts.add(new Post());			
 		}
 		return posts;
 
@@ -53,8 +55,8 @@ public class PostController {
 	}
 
 	@PostMapping(value = "/newPost")
-	public void addPost(@RequestParam("postText") String postText,
-			@RequestParam("userId") int userId) {
+	public void addPost(@RequestParam("post") String postText,
+			@RequestParam("user_id") int userId) {
 
 		User user = userRepo.selectById(userId);
 		if (user != null) {
@@ -63,14 +65,19 @@ public class PostController {
 			post.setUser(user);
 			postRepo.insert(post);
 		}
-
+		
 	}
 	
 	@PostMapping(value="/likePost")
-	public void likePost(@RequestParam("postId") int postId, @RequestParam("userId") int userId) {
+	public Post likePost(@RequestParam("postId") int postId, @RequestParam("userId") int userId) {
 		Post post = postRepo.selectById(postId);
 		Rating rating = new Rating();
-		
+		rating.setUser(userRepo.selectById(userId));
+		rating.setPost(post);
+		ratingRepo.insert(rating);
+		post.addRating(rating);
+		postRepo.update(post);
+		return post;		
 	}
 
 }

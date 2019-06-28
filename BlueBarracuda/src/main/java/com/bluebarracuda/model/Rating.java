@@ -24,8 +24,7 @@ public class Rating {
 	
 	@OneToOne(cascade=CascadeType.PERSIST, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-	
+    private User user;	
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinColumn(name="post_id", nullable=false)
@@ -51,7 +50,6 @@ public class Rating {
 		this.user = user;
 	}
 
-	
 
 	public Post getPost() {
 		return post;

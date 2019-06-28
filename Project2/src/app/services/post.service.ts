@@ -19,7 +19,7 @@ export class PostService {
         this.http.get<IPost[]>(`${environment.apiUrl}/post/getAllPosts`)
             .subscribe(posts => {
                 console.log(posts);
-                this.dataStore.posts = posts;
+                this.dataStore = posts;
                 this.posts = this.postSub.asObservable();
                 this.postSub.next(Object.assign({}, this.dataStore).posts);
             });

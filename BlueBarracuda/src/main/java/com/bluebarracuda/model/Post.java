@@ -33,8 +33,7 @@ public class Post {
     @JoinColumn(name="post_id")
 	private List<Rating> ratings;
 
-	public Post() {
-		
+	public Post() {		
 	}
 
 	public int getPostId() {
