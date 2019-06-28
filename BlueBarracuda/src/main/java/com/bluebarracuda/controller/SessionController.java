@@ -37,18 +37,20 @@ public class SessionController {
 	
 	@PostMapping(value="/updateUserProfile")
 	public @ResponseBody User updateUser(@RequestParam("username") String usernameParam,
-			@RequestParam("password") String passwordParam, @RequestParam("email") String emailParam, 
+			@RequestParam("password") String passwordParam,@RequestParam("hobbies") String hobbiesParam, @RequestParam("email") String emailParam, 
 			@RequestParam("profession") String professionParam){
 				
 				System.out.println("in the update user method");
 				String username = usernameParam;
 				String password = passwordParam;
+				String hobbies = hobbiesParam;
 				String email = emailParam;
 				String profession = professionParam;
 
 				User newUser = new User(username, password);
 				User updateUser = new User(username, password);
-				updateUser.setEmail(email);
+				updateUser.setUsername(username);
+				updateUser.setHobbies(hobbies);
 				updateUser.setPassword(password);
 				updateUser.setEmail(email);
 				updateUser.setOccupation(profession);
