@@ -6,12 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+<<<<<<< HEAD
 /**
  * @author  Arnold C. Sinko
  * 			Jacob Shanklin
@@ -20,6 +22,11 @@ import javax.persistence.Table;
  * 			Michael G. Perkins
  *
  */
+||||||| merged common ancestors
+=======
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+>>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 @Entity
 @Table(name = "Users")
 public class User {
@@ -27,7 +34,7 @@ public class User {
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userId;
+	private int user_id;
 
 	@Column(name = "user_name", unique = true, nullable = false)
 	private String username;
@@ -35,7 +42,8 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Post> posts;
 
 	@Column(name = "email")
@@ -69,12 +77,12 @@ public class User {
 		this.username = username;
 	}
 
-	public int getUserId() {
-		return userId;
+	public int getUser_id() {
+		return user_id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getUsername() {
@@ -156,4 +164,21 @@ public class User {
 	public void setImageLink(String imageLink) {
 		this.imageLink = imageLink;
 	}
+<<<<<<< HEAD
+||||||| merged common ancestors
+
+	
+
+=======
+
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password
+				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", occupation="
+				+ occupation + ", birthdate=" + birthdate + ", hobbies=" + hobbies + ", imageLink=" + imageLink + "]";
+	}
+
+	
+
+>>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 }

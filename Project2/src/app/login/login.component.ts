@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
   username = '';
-  userId: number;
+  user_id: number;
   userProfile: UserProfile;
   loginForm: FormGroup;
   loading = false;
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate([this.returnUrl]);
             },
             error => {
-                this.error = error;
+                // this.error = error;
                 this.loading = false;
             }
         );
@@ -79,8 +79,13 @@ export class LoginComponent implements OnInit {
     this.user = {
       password: this.password,
       username: this.username,
-      user_id: this.userId,
-      profile: this.userProfile
+      user_id: this.user_id,
+      email: '',
+      firstName: '',
+      lastName: '',
+      occupation: '',
+      birthdate: '',
+      hobbies: ''
     };
 
   }

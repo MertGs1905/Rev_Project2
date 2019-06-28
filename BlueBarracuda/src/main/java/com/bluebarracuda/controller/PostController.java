@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluebarracuda.model.Post;
+import com.bluebarracuda.model.Rating;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.PostRepo;
+import com.bluebarracuda.repo.RatingRepo;
 import com.bluebarracuda.repo.UserRepo;
 
 /**
@@ -26,7 +28,7 @@ import com.bluebarracuda.repo.UserRepo;
  */
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
-@RequestMapping(value = "/post")
+// @RequestMapping(value = "/post")
 public class PostController {
 
 	/**
@@ -37,6 +39,7 @@ public class PostController {
 	 * UserRepo is a Spring managed dependency of PostController
 	 */
 	private UserRepo userRepo;
+	private RatingRepo ratingRepo;
 
 	/**
 	 * 
@@ -50,30 +53,48 @@ public class PostController {
 	 * @param userRepo
 	 */
 	@Autowired
-	public PostController(PostRepo postRepo, UserRepo userRepo) {
+	public PostController(PostRepo postRepo, UserRepo userRepo, RatingRepo ratingRepo) {
 		this.postRepo = postRepo;
 		this.userRepo = userRepo;
+		this.ratingRepo = ratingRepo;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return A list of all Post(s) associated with a specific User
 	 */
 	@GetMapping(value = "/getAllPosts")
+||||||| merged common ancestors
+	@GetMapping(value = "/getAllPosts")
+=======
+	@GetMapping(value = "/post/getAllPosts")
+>>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 	public @ResponseBody List<Post> getAllPosts() {
 		System.out.println("Inside Get all posts");
-		return postRepo.SelectAll();
+		List<Post> posts = postRepo.SelectAll();
+		if(posts.isEmpty()) {
+			posts.add(new Post());			
+		}
+		return posts;
 
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param postId
 	 * @return A single Post determined by the provided postId
 	 */
 	@PostMapping(value = "/getPostById")
+||||||| merged common ancestors
+	@PostMapping(value = "/getPostById")
+=======
+	@PostMapping(value = "/post/getPostById")
+>>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
 	public @ResponseBody Post getPostById(@RequestParam("postId") int postId) {
 		return postRepo.selectById(postId);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * 
 	 * Calls the appropriate postRepo method in order to add a new Post from a specific User
@@ -84,15 +105,43 @@ public class PostController {
 	@PostMapping(value = "/newPost")
 	public void addPost(@RequestParam("postText") String postText,
 			@RequestParam("userId") int userId) {
+||||||| merged common ancestors
+	@PostMapping(value = "/newPost")
+	public void addPost(@RequestParam("postText") String postText,
+			@RequestParam("userId") int userId) {
+=======
+	@PostMapping(value = "/post/newPost")
 
-		User user = userRepo.selectById(userId);
+	public @ResponseBody boolean addPost(@RequestParam("postText") String postText,
+			@RequestParam("user_id") int user_id) {
+		
+
+	
+		System.out.println(postText + " : " + user_id);
+		User user = userRepo.selectById(user_id);
+		System.out.println(user);
+>>>>>>> cb466923809ac3589bac20d85dd2fb11387702e0
+
 		if (user != null) {
 			Post post = new Post();
 			post.setPostText(postText);
 			post.setUser(user);
+			System.out.println(post);
 			postRepo.insert(post);
-		}
-
+		}	
+		return true;
+	}
+	
+	@PostMapping(value="/likePost")
+	public @ResponseBody Post likePost(@RequestParam("postId") int postId, @RequestParam("userId") int userId) {
+		Post post = postRepo.selectById(postId);
+		Rating rating = new Rating();
+		rating.setUser(userRepo.selectById(userId));
+		rating.setPost(post);
+		ratingRepo.insert(rating);
+		post.addRating(rating);
+		postRepo.update(post);
+		return post;		
 	}
 
 }

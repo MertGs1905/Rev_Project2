@@ -54,10 +54,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       { path: 'resetpassword', component: ResetPasswordComponent},
       { path: 'login', component: LoginComponent },
       { path: 'post', component: PostFormComponent, canActivate: [AuthGuard]},
-      { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
-      { path: 'feed', component: PostFeedComponent, canActivate: [AuthGuard] }
-
-    ])
+      { path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuard]},
+      { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'paramsChange'},
+      { path: 'feed', component: PostFeedComponent, canActivate: [AuthGuard] },
+    ], { onSameUrlNavigation: 'reload' })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

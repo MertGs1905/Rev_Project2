@@ -4,48 +4,47 @@ import { CurrentUserService } from '../services/current-user.service';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../services';
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
-  currentUser: IUser;
-  userList = new Array();
-  constructor(private userService: CurrentUserService, private authenticationService: AuthenticationService) {
-    this.subscription = this.authenticationService.currentUser.subscribe(user => {
-      if (user) {
-        this.currentUser = user;
-      } else {
-        this.currentUser = null;
-      }
-      // console.log('CurrentUser in sidebar ' + this.currentUser);
-    });
-  }
+    subscription: Subscription;
+    currentUser: IUser;
+    userList: IUser[];
+    constructor(private route: Router, private userService: CurrentUserService, private authenticationService: AuthenticationService) {
+        this.subscription = this.authenticationService.currentUser.subscribe(user => {
+            if (user) {
+                this.currentUser = user;
+            } else {
+                this.currentUser = null;
+            }
+            // console.log('CurrentUser in sidebar ' + this.currentUser);
+        });
+    }
 
-  ngOnInit() {
-    const temp = this.authenticationService.getusers().pipe(first()).subscribe(userList => {
-        if (userList) {
-            this.userList = userList;
-        } else {
-            this.userList = null;
+    ngOnInit() {
+        if (this.currentUser) {
+            const temp = this.authenticationService.getusers().pipe(first()).subscribe(userList => {
+                if (userList) {
+                    this.userList = userList;
+                } else {
+                    this.userList = null;
+                }
+            });
         }
-    });
-    console.log(temp);
-    this.userList.push(temp);
-  }
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
-  }
 
+    }
+    ngOnDestroy() {
+        // unsubscribe to ensure no memory leaks
+        this.subscription.unsubscribe();
+    }
 
 }
-function getUsers() {
 
-}
 
 // $(document).ready(function () {
 
