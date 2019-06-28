@@ -24,10 +24,7 @@ public class Rating {
 	
 	@OneToOne(cascade=CascadeType.PERSIST, fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-	
-	@Column(name="isLiked")
-	private boolean isLiked;
+    private User user;	
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinColumn(name="post_id", nullable=false)
@@ -53,14 +50,6 @@ public class Rating {
 		this.user = user;
 	}
 
-	public boolean isLiked() {
-		return isLiked;
-	}
-
-	public void setLiked(boolean isLiked) {
-		this.isLiked = isLiked;
-	}	
-	
 
 	public Post getPost() {
 		return post;
@@ -72,7 +61,7 @@ public class Rating {
 
 	@Override
 	public String toString() {
-		return "Rating [ratingId=" + ratingId + ", user=" + user + ", isLiked=" + isLiked + "]";
+		return "Rating [ratingId=" + ratingId + ", user=" + user + "]";
 	}
 	
 	
