@@ -20,7 +20,7 @@ import com.bluebarracuda.repo.UserRepo;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
-@RequestMapping(value = "/post")
+// @RequestMapping(value = "/post")
 public class PostController {
 
 	private PostRepo postRepo;
@@ -38,7 +38,7 @@ public class PostController {
 		this.ratingRepo = ratingRepo;
 	}
 
-	@GetMapping(value = "/getAllPosts")
+	@GetMapping(value = "/post/getAllPosts")
 	public @ResponseBody List<Post> getAllPosts() {
 		System.out.println("Inside Get all posts");
 		List<Post> posts = postRepo.SelectAll();
@@ -49,14 +49,14 @@ public class PostController {
 
 	}
 
-	@PostMapping(value = "/getPostById")
+	@PostMapping(value = "/post/getPostById")
 	public @ResponseBody Post getPostById(@RequestParam("postId") int postId) {
 		return postRepo.selectById(postId);
 	}
 
-	@PostMapping(value = "/newPost")
+	@PostMapping(value = "/post/newPost")
 
-	public @ResponseBody boolean addPost(@RequestParam("post") String postText,
+	public @ResponseBody boolean addPost(@RequestParam("postText") String postText,
 			@RequestParam("user_id") int user_id) {
 		
 
