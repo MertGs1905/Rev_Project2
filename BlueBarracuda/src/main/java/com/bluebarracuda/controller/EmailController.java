@@ -11,16 +11,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bluebarracuda.email.MailService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 public class EmailController {
 
+		/**
+		 * 	MailService is a dependancy of EmailController
+		 */
 		private MailService mail;
 	
 	public EmailController() {
 		
 	}
 	
+	/**
+	 * @param mail
+	 */
 	@Autowired
 	public EmailController(MailService mail) {
 		this.mail = mail;
@@ -28,6 +43,12 @@ public class EmailController {
 	
 	
 
+	/**
+	 * Method called when a user clicks the forgot password button on the login screen. An auto generated email is sent to the user
+	 * containing a randomly generated temporary password allowing the user to login and update their password.  
+	 * 
+	 * @throws JsonProcessingException
+	 */
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
 
 	public @ResponseBody void doRestPwd() throws JsonProcessingException {
@@ -42,7 +63,7 @@ public class EmailController {
 			String receiverEmailId = "tlgraham2017@gmail.com";
 			System.out.println(receiverEmailId);
 			String subject = "Your Password Has Been Successfully Reset";
-			String message = "Your account is at serious thread. On our end it looks like "
+			String message = "Your account is at serious threat. On our end it looks like "
 					+ "you have forgotten your password. If that is not the case, please "
 					+ "consider that someone decided to prank you a little bit. In any case, "
 					+ "we suggest to change your password once you firstly log in."
@@ -53,11 +74,13 @@ public class EmailController {
 			mail.sendEmail(senderEmailId, receiverEmailId, subject, message);
 			
 			//Updating password in database
-		
-			
-			
 		}
 		
+		/**
+		 * called by doRestPwd. Method creates an random 8 digit alphanumeric temporary password to facilitate user password reset request  
+		 * 
+		 * @return 
+		 */
 		public static String generateAlphaNumericPassword(){
 			final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 			int len = 10;

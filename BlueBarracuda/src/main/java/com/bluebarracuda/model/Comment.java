@@ -14,6 +14,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @Entity
 @Table(name="Comment")
 public class Comment {
@@ -69,10 +78,5 @@ public class Comment {
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
 	}
-	
-	
-	
-	
-	
 	
 }

@@ -12,6 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @Entity
 @Table(name = "Users")
 public class User {
@@ -148,7 +156,4 @@ public class User {
 	public void setImageLink(String imageLink) {
 		this.imageLink = imageLink;
 	}
-
-	
-
 }

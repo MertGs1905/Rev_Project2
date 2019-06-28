@@ -15,35 +15,64 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bluebarracuda.model.Rating;
 import com.bluebarracuda.repo.RatingRepo;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
 @RequestMapping(value="/rating")
 public class RatingController {
 	
 
-	private com.bluebarracuda.repo.RatingRepo ratingRepo;
+	/**
+	 * RatingRepo is a Spring managed dependancy of of Rating Controller 
+	 */
+	private RatingRepo ratingRepo;
 	
+	/**
+	 * 
+	 */
 	public RatingController() {
 		
 	}
 	
 	
+	/**
+	 * @param ratingRepo
+	 */
 	@Autowired
 	public RatingController(RatingRepo ratingRepo) {
 		this.ratingRepo = ratingRepo;
 	}
 	
+	/**
+	 * @return A List of all Ratings associated with a specific Post
+	 */
 	@GetMapping(value="/getAllRatings")
 	public @ResponseBody List<Rating> getAllRating(){
 		return ratingRepo.selectAll();
 	}
 	
 
+	/**
+	 * 
+	 * @param num
+	 * @return A single Rating determined by the provided "id"
+	 */
 	@PostMapping(value="/getRatingById")
 	public @ResponseBody Rating getRatingById(@RequestParam("id") int num) {
 		return ratingRepo.selectById(num);
 	}
 	
+	/**
+	 * @param num
+	 * @return 
+	 */
 	@PostMapping(value="{num}/getRatingByUri")
 	public @ResponseBody Rating getRatingByUri(@PathVariable("num") int num) {
 		return ratingRepo.selectById(num);

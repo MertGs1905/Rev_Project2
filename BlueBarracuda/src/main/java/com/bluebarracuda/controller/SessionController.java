@@ -11,16 +11,36 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 
+/**
+ * @author  Arnold C. Sinko
+ * 			Jacob Shanklin
+ * 			Graham L Tyree
+ * 			Mert Altun
+ * 			Michael G. Perkins
+ *
+ */
 @CrossOrigin(origins = "https://localhost:4200")
 @Controller
 public class SessionController {
 
+	/**
+	 * UserRepo is a Spring managed dependency of SessionController
+	 */
 	private UserRepo userRepo;
 
+	/**
+	 * @param userRepo
+	 */
 	public SessionController(UserRepo userRepo) {
 		this.userRepo = userRepo;
 	}
 
+	/**
+	 * 
+	 * Method which creates a session to persist a User while logged in 
+	 * 
+	 * @param session
+	 */
 	@GetMapping(value = "")
 	public @ResponseBody void createSession(HttpSession session) {
 		String name = (String) session.getAttribute("loggedName");
@@ -30,6 +50,17 @@ public class SessionController {
 		System.out.println(pass);
 	}
 
+	/**
+	 * 
+	 * Method which extracts the parameters from an HTTP request and calls the appropriate method 
+	 * of the UserRepo to register a new User and hash their password
+	 * 
+	 * @param usernameParam
+	 * @param passwordParam
+	 * @param firstnameParam
+	 * @param lastnameParam
+	 * @param emailParam
+	 */
 	@PostMapping(value = "/registerUser")
 	public @ResponseBody void registerUser(@RequestParam("username") String usernameParam,
 			@RequestParam("password") String passwordParam, @RequestParam("firstname") String firstnameParam,
@@ -50,6 +81,15 @@ public class SessionController {
 		userRepo.insert(newUser);
 	}
 
+	/**
+	 * 
+	 * Method logs in a User after validating username and password exist in the database
+	 * 
+	 * 
+	 * @param username
+	 * @param password
+	 * @return the newly logged in user
+	 */
 	@PostMapping(value = "/authenticate")
 	public @ResponseBody User login(@RequestParam("username") String username,
 			@RequestParam("password") String password) {
@@ -65,9 +105,6 @@ public class SessionController {
 				return null;
 		}
 		return tmp;
-		
-
 	}
-
 
 }
