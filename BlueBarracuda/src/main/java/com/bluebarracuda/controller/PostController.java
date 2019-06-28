@@ -55,21 +55,20 @@ public class PostController {
 	}
 
 	@PostMapping(value = "/newPost")
-	public void addPost(@RequestParam("post") String postText,
+	public @ResponseBody boolean addPost(@RequestParam("post") String postText,
 			@RequestParam("user_id") int userId) {
-
 		User user = userRepo.selectById(userId);
 		if (user != null) {
 			Post post = new Post();
 			post.setPostText(postText);
 			post.setUser(user);
 			postRepo.insert(post);
-		}
-		
+		}	
+		return true;
 	}
 	
 	@PostMapping(value="/likePost")
-	public Post likePost(@RequestParam("postId") int postId, @RequestParam("userId") int userId) {
+	public @ResponseBody Post likePost(@RequestParam("postId") int postId, @RequestParam("userId") int userId) {
 		Post post = postRepo.selectById(postId);
 		Rating rating = new Rating();
 		rating.setUser(userRepo.selectById(userId));

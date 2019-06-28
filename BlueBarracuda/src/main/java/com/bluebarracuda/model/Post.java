@@ -17,6 +17,11 @@ import javax.persistence.Table;
 @Table(name = "Post")
 public class Post {
 
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", user=" + user + ", postText=" + postText + ", ratings=" + ratings + "]";
+	}
+
 	@Id
 	@Column(name = "post_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
