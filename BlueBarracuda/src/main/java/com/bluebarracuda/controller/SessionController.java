@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.bluebarracuda.model.User;
 import com.bluebarracuda.repo.UserRepo;
 
@@ -33,7 +34,30 @@ public class SessionController {
 		String pass = (String) session.getAttribute("loggedPass");
 		System.out.println(pass);
 	}
+	
+	@PostMapping(value="/updateUserProfile")
+	public @ResponseBody User updateUser(@RequestParam("username") String usernameParam,
+			@RequestParam("password") String passwordParam, @RequestParam("email") String emailParam, 
+			@RequestParam("profession") String professionParam){
+				
+				System.out.println("in the update user method");
+				String username = usernameParam;
+				String password = passwordParam;
+				String email = emailParam;
+				String profession = professionParam;
 
+				User newUser = new User(username, password);
+				User updateUser = new User(username, password);
+				updateUser.setEmail(email);
+				updateUser.setPassword(password);
+				updateUser.setEmail(email);
+				updateUser.setOccupation(profession);
+				System.out.println(updateUser.toString());
+				userRepo.update(updateUser);
+				
+				return updateUser;
+			}
+	
 	@PostMapping(value = "/registerUser")
 	public @ResponseBody ResponseEntity<User> registerUser(@RequestParam("username") String usernameParam,
 			@RequestParam("password") String passwordParam, @RequestParam("firstname") String firstnameParam,
