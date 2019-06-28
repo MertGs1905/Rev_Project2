@@ -14,7 +14,7 @@ export class PostService {
     currentUser: IUser;
 
     constructor(private http: HttpClient, private userService: AuthenticationService) {
-        this.posts = this.http.get<IPost[]>(`${environment.apiUrl}/post/getAllPosts`);
+        this.posts = this.http.get<IPost[]>(`${environment.apiUrl}/getAllPosts`);
         userService.currentUser.subscribe(cUser => this.currentUser = cUser);
     }
 
@@ -23,7 +23,7 @@ export class PostService {
             .set('postText', post.post)
             .set('user_id', this.currentUser.user_id.toString());
 
-        this.http.post(`${environment.apiUrl}/post/newPost`, payload).subscribe(data => {
+        this.http.post(`${environment.apiUrl}/newPost`, payload).subscribe(data => {
             console.log('Post added' + data);
         });
 
