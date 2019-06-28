@@ -9,10 +9,12 @@ export class CurrentUserService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<any[]>(`${environment.apiUrl}/users`);
+        return this.http.get<any[]>(`${environment.apiUrl}/user`);
     }
     getById(id) {
-        return this.http.get<IUser>(`${environment.apiUrl}/users/${id}`);
+        const payload = new HttpParams()
+            .set('user_id', id);
+        return this.http.post<IUser>(`${environment.apiUrl}/user/getUserById`, payload);
     }
     register(username, password, firstName, lastName, email) {
         const payload = new HttpParams()
@@ -26,7 +28,7 @@ export class CurrentUserService {
     }
 
     delete(id) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`);
+        return this.http.delete(`${environment.apiUrl}/user/${id}`);
     }
     resetPw(email) {
         const payload = new HttpParams()

@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IUser } from './User';
 import { AuthenticationService } from '.';
+import { Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +15,7 @@ export class PostService {
     posts: Observable<IPost[]>;
     currentUser: IUser;
 
-    constructor(private http: HttpClient, private userService: AuthenticationService) {
+    constructor(private http: HttpClient, private userService: AuthenticationService, private route: Router) {
         this.posts = this.http.get<IPost[]>(`${environment.apiUrl}/post/getAllPosts`);
         userService.currentUser.subscribe(cUser => this.currentUser = cUser);
     }
@@ -24,7 +26,9 @@ export class PostService {
             .set('user_id', this.currentUser.user_id.toString());
 
         this.http.post(`${environment.apiUrl}/post/newPost`, payload).subscribe(data => {
-            console.log('Post added' + data);
+            this.posts = this.http.get<IPost[]>(`${environment.apiUrl}/post/getAllPosts`);
+            delay(5000);
+            this.route.navigate(['/feed']);
         });
 
     }
